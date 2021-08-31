@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS granny_db;
+CREATE DATABASE granny_db;
