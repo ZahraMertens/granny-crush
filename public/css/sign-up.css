@@ -6,7 +6,7 @@
   
   main {
       box-sizing: border-box;
-      background-image: url(/public/images/background5.png);
+      background-image: url(../images/background5.png);
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
