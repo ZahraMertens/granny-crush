@@ -1,0 +1,28 @@
+.title-navbar {
+  padding: 30px;
+  padding-top: 40px;
+  padding-right: 50px;
+}
+
+main {
+    height: 800px;
+    box-sizing: border-box;
+    background-image: url(/public/images/background1.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.form {
+    margin-left: 200px;
+    padding-top: 300px;
+}
+
+.sign-up-btn {
+    padding-right: 30px;
+}
+
+.login-btn {
+    font-size: 20px;
+}
