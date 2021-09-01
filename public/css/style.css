@@ -7,7 +7,7 @@
 main {
     height: 800px;
     box-sizing: border-box;
-    background-image: url(/public/images/background1.png);
+    background-image: url(../images/background1.png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
