@@ -2,10 +2,11 @@
   padding: 30px;
   padding-top: 40px;
   padding-right: 50px;
+  margin-bottom: 0px!important;
 }
 
-main {
-    height: 800px;
+.login-main {
+    height: 800px; 
     box-sizing: border-box;
     background-image: url(../images/background1.png);
     -webkit-background-size: cover;
@@ -14,15 +15,100 @@ main {
     background-size: cover;
 }
 
-.form {
-    margin-left: 200px;
-    padding-top: 300px;
+.signup-main {
+    height: 100%; 
+    box-sizing: border-box;
+    background-image: url(../images/background5.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.sign-up-btn {
-    padding-right: 30px;
+.homepage-main {
+    height: 800px; 
+    box-sizing: border-box;
+    background-image: url(../images/background4.png);
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 60px;
+}
+
+/* ======= LOGIN PAGE ========= */
+.login-form {
+    margin-left: 200px;
+    padding-top: 200px!important;
+}
+
+.title-login{
+    font-size: 50px!important;
+    font-size: bold!important;
 }
 
 .login-btn {
+    font-size: 23px!important;
+}
+
+.login-btn:hover {
+    background-color: rgb(180, 0, 150)!important;
+}
+
+#login-signup-p{
     font-size: 20px;
+}
+
+/* ======= HOME PAGE ========= */
+.home-tab{
+    margin-bottom: 1px!important;
+}
+
+.home-main-card {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px rgb(84, 84, 255);
+    border-radius: 10px!important;
+}
+
+.home-main-content {
+    font-size: 35px;
+    text-align: center;
+}
+
+.home-card-container{
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: transparent!important;
+   box-shadow: none!important;
+   padding-top: 20px;
+}
+
+.home-card {
+    width:500px;
+    display: inline-block;
+}
+
+#home-search-btn {
+    margin-top: 20px;
+    font-size: 20px!important;
+}
+
+.home-tile-one {
+    background-color: rgb(255, 115, 115)!important;
+}
+
+.home-tile-two {
+    background-color: rgb(210, 255, 143)!important;
+}
+
+.home-tile-three {
+    background-color: rgb(255, 248, 144)!important;
+}
+
+/* ======= SIGNUP PAGE ========= */
+.signup-form {
+    margin-left: 800px;
+    padding-bottom: 50px!important;
 }
