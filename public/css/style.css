@@ -35,6 +35,16 @@
     padding-top: 60px;
 }
 
+/* Add different image */
+.search-main{ 
+    box-sizing: border-box;
+    background-image: url(../images/background4.png); 
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 60px;
+}
+
 /* ======= LOGIN PAGE ========= */
 .login-form {
     margin-left: 200px;
