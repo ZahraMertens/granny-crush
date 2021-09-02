@@ -12,8 +12,7 @@ const loginHandler = async (event) => {
         });
 
         if(res.ok){
-            // console.log("Response ok")
-            document.location.replace("/homepage")
+            document.location.replace("/")
         } else {
             alert(res.error)
         }

@@ -16,9 +16,9 @@ User.belongsToMany(Hobby,{
 Hobby.belongsToMany(User,{
     through:{
         model:UserHobby,
-        unique:false,
+        unique: false,
     },
-    as:'associated_products'
+    as:'associated_users'
 })
 
 // User and User many to many relationship (through UserHobby)
