@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Sal",
+    "email": "sal@hotmail.com",
+    "password": "password12345",
+    "age":65,
+    "phone":412038495,
+    "postcode":2000,
+    "fun_fact":"I like knitting"
+  },
+  {
+    "name": "Lernantino",
+    "email": "lernantino@gmail.com",
+    "password": "password12345",
+    "age":75,
+    "phone":412568495,
+    "postcode":2011,
+    "fun_fact":"I have 20 cats"
+  },
+  {
+    "name": "Amiko",
+    "email": "amiko2k20@aol.com",
+    "password": "password12345",
+    "age":60,
+    "phone":412038135,
+    "postcode":2000,
+    "fun_fact":"I have never been married"
+  }
+]
