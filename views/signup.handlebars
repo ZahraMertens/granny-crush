@@ -1,6 +1,6 @@
 <main class="signup-main">
 
-    <div class="signup-form form column is-one-third">
+    <form class="signup-form form column is-one-third">
             <div>
                 <h3 class="title is-2">Sign Up</h3>
             </div>
@@ -8,7 +8,7 @@
               <div class="field">
                 <label class="label is-normal">Username:</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input is-success" type="text" placeholder="Your preferred name" value="">
+                  <input id="signup-username" class="input is-success" type="text" placeholder="Your preferred name" value="">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -22,7 +22,7 @@
               <div class="field">
                 <label class="label is-normal">Email:</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input is-danger" type="email" placeholder="yourName@gmail.com" value="">
+                  <input id="signup-email" class="input is-danger" type="email" placeholder="yourName@gmail.com" value="">
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>
@@ -36,10 +36,11 @@
               <div class="field">
                 <label class="label is-normal">Gender</label>
                 <div class="control">
-                  <div class="select">
+                  <div class="signup-gender select">
                     <select>
                       <option>Male</option>
                       <option>Female</option>
+                      <option>Other</option>
                     </select>
                   </div>
                 </div>
@@ -78,6 +79,7 @@
                 <div class="control">
                   <div class="select">
                     <select>
+                      {{!-- Create loop instead of hard coded elements! --}}
                       <option>54</option>
                       <option>55</option>
                       <option>56</option>
@@ -102,7 +104,7 @@
                       <option>75</option>
                       <option>76</option>
                       <option>77</option>
-                      <option>78</option>
+                      <option>78</option>  
                       <option>79</option>
                       <option>80</option>
                       <option>81</option>
@@ -142,12 +144,14 @@
               
               <div class="field is-grouped">
                 <div class="control">
-                  <button class="button is-medium is-link">Sign Up</button>
+                  <button type="submit" class="button is-medium is-link">Sign Up</button>
                 </div>
                 <div class="control">
                   <button class="button is-link is-medium is-light">Cancel</button>
                 </div>
             </div>
-    </div>
+    </form>
 
 </main>
+
+<script src="/js/signup.js"></script>
