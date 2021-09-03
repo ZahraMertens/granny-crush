@@ -28,5 +28,16 @@ router.get('/signup', (req, res) => {
   
     res.render('signup');
 });
+
+
+router.get('/search', withAuth, (req, res) => {
+
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('search');
+});
   
 module.exports = router;

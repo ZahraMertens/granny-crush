@@ -36,11 +36,11 @@
               <div class="field">
                 <label class="label is-normal">Gender</label>
                 <div class="control">
-                  <div class="signup-gender select">
-                    <select>
-                      <option>Male</option>
-                      <option>Female</option>
-                      <option>Other</option>
+                  <div class="select">
+                    <select id="signup-gender">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>
@@ -48,77 +48,83 @@
               
               <div class="field">
                 <label class="label">Phone:</label>
-                <div class="control">
-                  <div class="field is-horizontal">
-                <div class="field-body">
-                  <div class="field is-expanded">
-                    <div class="field has-addons">
-                      <p class="control">
-                        <a class="button is-static">
-                          +61
-                        </a>
-                      </p>
-                      <p class="control is-expanded">
-                        <input class="input" type="tel" placeholder="Your phone number">
-                      </p>
-                    </div>
-                    <p class="help">Do not enter the first zero</p>
-                  </div>
-                </div>
-              </div>
-                </div>
-              </div>
-
-              <label class="label is-normal">Postcode:</label>
-                <div class="control has-icons-left has-icons-right">
-                  <input class="input is-success" type="text" placeholder="Text input" value="2000">
+                 <div class="control has-icons-left has-icons-right">
+                  <input id="signup-phone" class="input is-success" type="text" placeholder="Text input" value="2000">
+                 </div>
               </div>
               <div class="field">
-                <label class="label is-normal">Age:</label>
-                <div class="control">
-                  <div class="select">
-                    <select>
-                      {{!-- Create loop instead of hard coded elements! --}}
-                      <option>54</option>
-                      <option>55</option>
-                      <option>56</option>
-                      <option>57</option>
-                      <option>58</option>
-                      <option>59</option>
-                      <option>60</option>
-                      <option>61</option>
-                      <option>62</option>
-                      <option>63</option>
-                      <option>64</option>
-                      <option>65</option>
-                      <option>66</option>
-                      <option>67</option>
-                      <option>68</option>
-                      <option>69</option>
-                      <option>70</option>
-                      <option>71</option>
-                      <option>72</option>
-                      <option>73</option>
-                      <option>74</option>
-                      <option>75</option>
-                      <option>76</option>
-                      <option>77</option>
-                      <option>78</option>  
-                      <option>79</option>
-                      <option>80</option>
-                      <option>81</option>
-                    </select>
+                <label class="label is-normal">Postcode:</label>
+                 <div class="control has-icons-left has-icons-right">
+                  <input id="signup-postcode" class="input is-success" type="text" placeholder="Text input" value="2000">
+                 </div>
+              </div>
+              <br>
+              <div class="field">
+                 <label class="label is-normal">Age:</label>
+                   <div class="control">
+                     <div class="select">
+                       <select id="signup-age">
+                       {{!-- Loop from JS file to loop over age --}}
+                       </select>
+                     </div>
                   </div>
-                </div>
-              <label class="label is-normal">Your Age: (If you are 68 years old, enter "68")</label>
-                <div class="control has-icons-left has-icons-right">
-                  <input class="input is-success" type="text" placeholder="68" value="">
               </div>
-
-              <label class="label is-normal">Fun Fact:</label>
-                <div class="control has-icons-left has-icons-right">
-                  <textarea class="input is-success" type="text" placeholder="I am a crazy cat lady" value="2000" rows="1"></textarea>
+              <br>
+              <div>
+                <label class="label is-normal">Fun Fact:</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <textarea id="signup-fact" class="input is-success" type="text" placeholder="I am a crazy cat lady" value="2000" rows="1"></textarea>
+                  </div>
               </div>
+              <br>
+              <div class="control">
+                <label class="label is-normal">Hobby:</label>
+                  <div id="signup-hobby">
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Knitting">
+                        Knitting
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Woodworking">
+                        Woodworking
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Cars">
+                        Cars
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Cats">
+                        Cats
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Painting">
+                        Painting
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Karaoke">
+                        Karaoke
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Videogames">
+                        Videogames
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Reading">
+                        Reading
+                    </label>
+                  </div>
+              </div>
+              <br>
+              <div class="field">
+                <label class="label is-normal">Password:</label>
+                 <p class="control has-icons-left">
+                   <input id="signup-password" class="input" type="password" placeholder="Password">
+                     <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+              </div>
+              <br>
 
               {{!-- <label class="label is-normal">Upload a Picture:</label>
               <div class="file">
@@ -139,17 +145,18 @@
                 <div class="control">
                   <label class="checkbox">
                     <input type="checkbox">
-                    I agree to the <a href="#">terms and conditions</a>
+                    I agree to the <a href="https://termly.io/products/terms-and-conditions-generator/">terms and conditions</a>
                   </label>
                 </div>
               </div>
+
               
               <div class="field is-grouped">
                 <div class="control">
                   <button type="submit" class="button is-medium is-link">Sign Up</button>
                 </div>
                 <div class="control">
-                  <button class="button is-link is-medium is-light">Cancel</button>
+                  <button href="/login" class="button is-link is-medium is-light">Cancel</button>
                 </div>
             </div>
     </form>

@@ -1,10 +1,31 @@
+
+/* ======= NAVBAR ========== */
 .title-navbar {
-  padding: 30px;
+  padding-left: 30px;
   padding-top: 40px;
   padding-right: 50px;
+  padding-bottom: 10px;
   margin-bottom: 0px!important;
 }
 
+.nav-p{
+  padding-left: 30px;
+  padding-bottom: 10px;
+  font-size: 21px;
+  font-weight: 200;
+}
+
+.navbar-about-us{
+   padding: 0px!important;
+   margin-left: 80px!important;
+   font-size: 27px;
+}
+
+.navbar-item {
+   align-items: baseline;
+}
+
+/* =====BACKGROUND IMAGES FOR HANDLEBARS======= */
 .login-main {
     height: 800px; 
     box-sizing: border-box;
@@ -36,16 +57,22 @@
 }
 
 /* Add different image */
-.search-main{ 
+/* .search-main { 
+    height: 700px;
     box-sizing: border-box;
-    background-image: url(../images/background4.png); 
+    background-image: url(../images/background7.png); 
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     padding-top: 60px;
-}
+} */
 
 /* ======= LOGIN PAGE ========= */
+
+.search-main {
+    height: 700px;
+}
+
 .login-form {
     margin-left: 200px;
     padding-top: 200px!important;
@@ -122,3 +149,44 @@
     margin-left: 800px;
     padding-bottom: 50px!important;
 }
+
+/* ========= SEARCH PAGE ========== */
+
+.search-form {
+    background-color: rgb(163, 161, 226);
+    width: 400px!important;
+    height: 400px;
+    margin-left: 400px;
+    margin-top: 120px;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.search-label {
+    font-size: 22px!important;
+}
+
+.search-age-container {
+   display: inline;
+}
+
+#search-heart-img {
+    width: 400px;
+    animation-duration: 8s;
+    animation-name: heart;
+    animation-iteration-count: infinite;
+}
+
+@keyframes heart {
+  0% {
+    margin-top: 5%;
+  }
+  50% {
+    margin-top: 180px;
+  }
+  100% {
+    margin-top: 5%;
+  }
+}
+
+
