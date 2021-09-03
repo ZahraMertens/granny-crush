@@ -37,7 +37,9 @@ router.get('/search', withAuth, (req, res) => {
     return;
   }
 
-  res.render('search');
+  res.render('search', {
+    logged_in: req.session.logged_in
+  });
 });
   
 module.exports = router;
