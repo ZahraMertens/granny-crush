@@ -1,19 +1,39 @@
-<main class="search-main">
+<div class="home-tab tabs is-large is-boxed is-centered">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a>My Profile</a></li>
+    <li class="is-active"><a href="/search">Search</a></li>
+    <li><a>Chat</a></li>
+  </ul>
+</div>
 
-<h1>Search form</h1>
-  <form class="search-form">
-        <div class="field">
-        <label class="label">Age:</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Alex Smith">
+<main class="columns search-main">
+
+      <form class="column search-form">
+        <div class="columns search-age-container">
+          <div class="column is-3 field">
+            <label class="search-label label">Min Age:</label>
+            <div class="search-dropdown select">
+                <select id="search-age1">
+                  {{!-- Loop from JS file to loop over age --}}
+              </select>
+            </div>   
+        </div>
+          <div class="column field">
+          <label class="search-label label">Max Age:</label>
+              <div class="search-dropdown select">
+                  <select id="search-age2">
+                    {{!-- Loop from JS file to loop over age --}}
+                </select>
+              </div>   
           </div>
         </div>
 
         <div class="field">
-          <label class="label is-normal">Gender:</label>
+          <label class="search-label label is-normal">Gender:</label>
                 <div class="control">
                   <div class="search-gender select">
-                    <select>
+                    <select id="search-gender">
                       <option>Male</option>
                       <option>Female</option>
                       <option>Other</option>
@@ -23,15 +43,21 @@
         </div>
 
         <div class="field">
-        <label class="label">Postcode:</label>
+        <label class="search-label label">Postcode:</label>
           <div class="control">
-            <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com">
+            <input id="search-postcode" class="input" type="postcode" placeholder="e.g. 2000">
           </div>
         </div>
         <div class="control">
-            <button type="submit" class="button is-medium is-link">Search</button>
+            <button type="submit" class="button is-medium is-link is-danger">Search</button>
         </div>
    </form>
+   
+   <div class="column search-header">
+     <img id="search-heart-img" src="/images/heart.jpg">
+  </div>
+
+   
 
 </main>
 

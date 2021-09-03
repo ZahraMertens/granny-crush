@@ -1,1 +1,15 @@
-<h1>Match results</h1>
+<div class="home-tab tabs is-large is-boxed is-centered">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a>My Profile</a></li>
+    <li class="is-active"><a href="/search">Search</a></li>
+    <li><a>Chat</a></li>
+  </ul>
+</div>
+
+<main class="results-main">
+    {{#each users as |user|}}
+       <h1>{{user.name}}</h1>
+    {{/each}}
+</main>
+

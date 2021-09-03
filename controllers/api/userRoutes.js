@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User, Hobby , UserHobby , UserMatch} = require('../../models');
-// const sequelize = require('../../config/connection');
 const { Op } = require("sequelize");
 
 //get all users FOR INSOMNIA
@@ -60,16 +59,17 @@ router.post('/search', async (req,res)=>{
         })
 
         if (!userData){
-            res.status(404).json(userData)
+            res.status(404).json({name: error.name, message: error.message})
         } else {
+            console.log(userData)
             res.status(200).json(userData)
         }
 
-        console.log(userData)
-
         // const users = userData.map((user) => {
-        //     return user.get({plain: true})
+        //     user.get({plain: true})
         // })
+
+        // console.log(users)
 
         // res.render('results', {
         //     ...users,
@@ -123,6 +123,41 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
         res.status(404).json({message: "specific error to not show the user where the error is"})
+    }
+});
+
+router.post('/signup', async (req, res) => {
+    try {
+        const userData = User.create(req.body)
+        // .then((user) => {
+
+        //     if(req.body.hobby_name.length){
+        //         const hobbyArray = req.body.hobby_name.map((hobby_id) => {
+        //             return {
+        //                 user_id: user.id,
+        //                 hobby_id,
+        //             };
+        //         });
+        //         return UserHobby.create(hobbyArray)
+        //     }
+
+        //     res.status(200).json(user);
+
+            req.session.save(() => {
+                req.session.user_id = userData.id;
+                req.session.logged_in = true;
+
+                res.status(200).json(userData);
+            });
+
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        //     res.status(404).json({name: error.name, message: error.message})
+        // })
+
+    } catch (error) {
+        res.status(500).json({name: error.name, message: error.message})
     }
 });
 
