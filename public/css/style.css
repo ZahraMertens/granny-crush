@@ -16,6 +16,7 @@
   padding-left: 30px;
   font-size: 21px;
   font-weight: 200;
+  padding-bottom: 20px;
 }
 
 .navbar-about-us{
@@ -192,9 +193,8 @@
 }
 
 .home-tile-container {
-  width: 1200px;
+  width: 1000px;
   margin-left: 600px;
-  
 }
 
 .home-main-card {

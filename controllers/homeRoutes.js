@@ -42,4 +42,18 @@ router.get('/search', withAuth, (req, res) => {
   });
 });
   
+
+router.get('/results', withAuth, (req, res) => {
+
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('results', {
+    logged_in: req.session.logged_in
+  });
+});
+
+
 module.exports = router;

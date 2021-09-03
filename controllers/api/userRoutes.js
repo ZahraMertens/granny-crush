@@ -49,7 +49,7 @@ router.post('/search', async (req,res)=>{
                   as: 'associated_hobbies' 
                 }
             ],
-            where:{
+            where: {
                 age: {
                     [Op.between]: [ req.body.minAge ,  req.body.maxAge]
                 },
@@ -60,21 +60,22 @@ router.post('/search', async (req,res)=>{
 
         if (!userData){
             res.status(404).json({name: error.name, message: error.message})
-        } else {
-            console.log(userData)
-            res.status(200).json(userData)
         }
+           
+        const users = userData.map((user) => {
+            return user.get({plain: true})
+        })
+        console.log(users) //returns object of user 
 
-        // const users = userData.map((user) => {
-        //     user.get({plain: true})
-        // })
+        const currentUser = req.session.user_id
+        console.log(currentUser) //Returns current user id "4"
 
-        // console.log(users)
+        const usersId = users.map(({id}) => id);
+        console.log(usersId) //Returns an array of the users matches ids [ 1, 2 ]
 
-        // res.render('results', {
-        //     ...users,
-        //     logged_in: req.session.logged_in
-        // })
+        //Create match between user with id 4 and the results
+        UserMatch.bulkCreate(newUserMatch)
+        
     }
     catch(e){
         console.log(e)
