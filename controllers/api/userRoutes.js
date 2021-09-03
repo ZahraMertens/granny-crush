@@ -128,33 +128,23 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
-        const userData = User.create(req.body)
-        // .then((user) => {
-
-        //     if(req.body.hobby_name.length){
-        //         const hobbyArray = req.body.hobby_name.map((hobby_id) => {
-        //             return {
-        //                 user_id: user.id,
-        //                 hobby_id,
-        //             };
-        //         });
-        //         return UserHobby.create(hobbyArray)
-        //     }
-
-        //     res.status(200).json(user);
+        const userData = await User.create(req.body)
+        const hobbyData = await Hobby.findAll({
+            where:{
+                hobby_name: req.body.hobby_name
+            }
+        })
+        const hobbyId = hobbyData.map((hobby)=>hobby.get({ plain: true }))
+        const userHobbyData = UserHobby.create({
+            user_id: userData.id,
+            hobby_id: hobbyId[0].id
+        })
 
             req.session.save(() => {
                 req.session.user_id = userData.id;
                 req.session.logged_in = true;
-
                 res.status(200).json(userData);
             });
-
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        //     res.status(404).json({name: error.name, message: error.message})
-        // })
 
     } catch (error) {
         res.status(500).json({name: error.name, message: error.message})
