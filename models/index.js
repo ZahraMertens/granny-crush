@@ -21,14 +21,7 @@ Hobby.belongsToMany(User,{
     as:'associated_users'
 })
 
-// User and User many to many relationship (through UserHobby)
-// User.belongsToMany(User,{
-//     through:{
-//         model:UserMatch
-//     },
-//     as: 'user_id',
-//     foreignKey: 'id'
-// })
+// This also creates a user_id / userId and a match_id / matchId automatically without having to define in the model
 
 User.belongsToMany(User,{
     through:UserMatch,

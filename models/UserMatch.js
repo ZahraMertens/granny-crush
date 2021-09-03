@@ -13,21 +13,7 @@ UserMatch.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // user_id: {
-    //   type: DataTypes.INTEGER,
-    //   references:{
-    //     model: 'user',
-    //     key: 'id',
-    //   }
-    // },
-    // match_id: {
-    //   type: DataTypes.INTEGER,
-    //   references:{
-    //     model:'user',
-    //     key:'id',
-    //   }
-    
-    // }
+    // no need to define columns here as it will be automatically added in index
   },
   {
     sequelize,
