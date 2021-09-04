@@ -192,6 +192,10 @@
     margin-bottom: 0.2px!important;
 }
 
+.active-tab {
+    font-weight: 700!important;
+}
+
 .home-tile-container {
   width: 1000px;
   margin-left: 600px;

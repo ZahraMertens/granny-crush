@@ -17,17 +17,32 @@ const searchHandler = async (event) => {
     console.log(gender)
 
     if (minAge && maxAge && postcode && gender) {
+
+      // const res = await fetch(`/api/users/search/${minAge}/${maxAge}/${gender}/${postcode}`, {
+      //   method: 'GET',
+      //   headers: { 'Content-Type': 'application/json' },
+      // })
+
       const res = await fetch('/api/users/search', {
         method: 'POST',
         body: JSON.stringify({minAge, maxAge, postcode, gender}),
         headers: { 'Content-Type': 'application/json' },
-      });
+      })
   
       if (res.ok) {
         // returns search results based on inputted data
         const searchResults = await res.json()
         console.log(searchResults)
-        return searchResults
+        
+        const searchForm = document.querySelector('.search-form').remove();
+
+        for (let i = 0; i < searchResults.length; i++){
+          console.log(searchResults[i].name)
+          //Append div to /search handlebars
+          ``
+        }
+
+        // return searchResults
         // document.location.replace('/results');
       } else {
         // document.location.replace('/search')
