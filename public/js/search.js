@@ -24,9 +24,13 @@ const searchHandler = async (event) => {
       });
   
       if (res.ok) {
-        document.location.replace('/results');
+        // returns search results based on inputted data
+        const searchResults = await res.json()
+        console.log(searchResults)
+        return searchResults
+        // document.location.replace('/results');
       } else {
-        document.location.replace('/sarch')
+        // document.location.replace('/search')
         alert("There are no matches!")
       }
     }

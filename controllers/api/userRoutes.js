@@ -57,29 +57,31 @@ router.post('/search', async (req,res)=>{
                 postcode: req.body.postcode,
             }
         })
-
-        if (!userData){
-            res.status(404).json({name: error.name, message: error.message})
+        // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
+        if (userData.length===0){
+            res.status(404).json("No users found")
+            return
         }
            
         const users = userData.map((user) => {
             return user.get({plain: true})
         })
         console.log(users) //returns object of user 
+        //PG edit - returns the users array/object as a response for us to use in the fetch / front end. No need to store in DB. 
+        res.status(200).json(users);
 
-        const currentUser = req.session.user_id
-        console.log(currentUser) //Returns current user id "4"
+        // const currentUser = req.session.user_id
+        // console.log(currentUser) //Returns current user id "4"
 
-        const usersId = users.map(({id}) => id);
-        console.log(usersId) //Returns an array of the users matches ids [ 1, 2 ]
+        // const usersId = users.map(({id}) => id);
+        // console.log(usersId) //Returns an array of the users matches ids [ 1, 2 ]
 
         //Create match between user with id 4 and the results
-        UserMatch.bulkCreate(newUserMatch)
+        // UserMatch.bulkCreate(newUserMatch)
         
     }
-    catch(e){
-        console.log(e)
-    }
+    catch(error){
+        res.status(500).json({name: error.name, message: error.message})    }
 })
 
 // get all users matched 
@@ -131,24 +133,24 @@ router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body)
         const hobbyData = await Hobby.findAll({
-            where:{
+            where: {
                 hobby_name: req.body.hobby_name
             }
         })
-        const hobbyId = hobbyData.map((hobby)=>hobby.get({ plain: true }))
+        const hobbyId = hobbyData.map((hobby) => hobby.get({ plain: true }))
         const userHobbyData = UserHobby.create({
             user_id: userData.id,
             hobby_id: hobbyId[0].id
         })
 
-            req.session.save(() => {
-                req.session.user_id = userData.id;
-                req.session.logged_in = true;
-                res.status(200).json(userData);
-            });
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+            res.status(200).json(userData);
+        });
 
     } catch (error) {
-        res.status(500).json({name: error.name, message: error.message})
+        res.status(500).json({ name: error.name, message: error.message })
     }
 });
 
