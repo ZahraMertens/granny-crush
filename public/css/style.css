@@ -66,11 +66,16 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px inset;
 }
 
-/* ======= LOGIN PAGE ========= */
+.results-main {
+    height: 100%!important;
+}
 
 .search-main {
     height: 700px;
+    margin-top: 5px;
 }
+
+/* ======= LOGIN PAGE ========= */
 
 .login-form {
     margin-left: 200px;
@@ -190,6 +195,7 @@
 /* ======= HOME PAGE ========= */
 .home-tab {
     margin-bottom: 0.2px!important;
+    box-shadow: rgba(53, 25, 131, 0.35) 0px 5px 15px ;
 }
 
 .active-tab {
@@ -269,6 +275,8 @@
     margin-top: 120px;
     padding: 30px;
     border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-right: 30px;
 }
 
 .search-label {
@@ -298,4 +306,67 @@
   }
 }
 
+/* ===== RESULTS IN SERACH PAGE======= */
+
+.card-profile {
+   display: inline-block;
+   width: 400px;
+   padding: 20px;
+   margin: 20px;
+   -webkit-animation: fadein 3s ease-in;
+    -moz-animation: fadein 3s ease-in;
+    animation: fadein 3s ease-in;
+}
+
+@keyframes fadein {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.result-animation {
+    text-align: center;
+    padding-top: 100px!important;
+}
+
+.result-title1 {
+    -webkit-animation: fadein 0.5s ease-in;
+    -moz-animation: fadein 0.5s ease-in;
+    animation: fadein 0.5s ease-in;
+}
+
+.result-title2 {
+    color: rgb(224, 17, 69)!important;
+    -webkit-animation: fadein 1.5s ease-in;
+    -moz-animation: fadein 1.5s ease-in;
+    animation: fadein 1.5s ease-in;
+}
+
+.result-title3 {
+    -webkit-animation: fadein 2.5s ease-in;
+    -moz-animation: fadein 2.5s ease-in;
+    animation: fadein 2.5s ease-in;
+}
+
+.result-title {
+    font-family: 'Satisfy', cursive;
+}
+
+.profile-img {
+    height: 230px!important;
+    object-fit: cover;
+}
+
+.result-span-card {
+    font-weight: bold;
+}
+
+.result-heart-img {
+    width: 300px!important;
+    margin-left: 50px;
+}
+
+.result-card-content {
+    padding-top: 0px!important;
+    padding-bottom: 3px!important;
+}
 

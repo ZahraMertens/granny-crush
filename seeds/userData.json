@@ -1,23 +1,47 @@
 [
   {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
+    "name": "Samantha",
+    "email": "sam@hotmail.com",
     "password": "password12345",
     "age":65,
     "gender":"Female",
     "phone":412038495,
     "postcode":2000,
-    "fun_fact":"I like knitting"
+    "fun_fact":"I like knitting",
+    "filename": "grandma1.jpg"
   },
   {
     "name": "Lernantino",
     "email": "lernantino@gmail.com",
     "password": "password12345",
     "age":75,
-    "gender":"Other",
+    "gender":"Male",
     "phone":412568495,
     "postcode":2011,
-    "fun_fact":"I have 20 cats"
+    "fun_fact":"I have 20 cats",
+    "filename": "grandpa1.jpg"
+  },
+  {
+    "name": "Greta",
+    "email": "greta@aol.com",
+    "password": "password12345",
+    "age":60,
+    "gender":"Female",
+    "phone":412038135,
+    "postcode":2000,
+    "fun_fact":"I have been married 7 times",
+    "filename": "grandma2.jpg"
+  },
+  {
+    "name": "Freddy",
+    "email": "fred2@gmail.com",
+    "password": "password12345",
+    "age":64,
+    "gender":"Male",
+    "phone":412038136,
+    "postcode":2001,
+    "fun_fact":"I have never been married",
+    "filename": "grandpa2.jpg"
   },
   {
     "name": "Amiko",
@@ -27,6 +51,51 @@
     "gender":"Female",
     "phone":412038135,
     "postcode":2000,
-    "fun_fact":"I have never been married"
+    "fun_fact":"I love to travel",
+    "filename": "grandma3.jpg"
+  },
+  {
+    "name": "Charlotte",
+    "email": "charlie@aol.com",
+    "password": "password12345",
+    "age":65,
+    "gender":"Female",
+    "phone":412038135,
+    "postcode":2000,
+    "fun_fact":"I like dogs",
+    "filename": "grandma4.jpg"
+  },
+  {
+    "name": "George",
+    "email": "george@aol.com",
+    "password": "password12345",
+    "age":70,
+    "gender":"Male",
+    "phone":412038135,
+    "postcode":2000,
+    "fun_fact":"I have never been married",
+    "filename": "grandpa3.jpg"
+  },
+  {
+    "name": "Georgia",
+    "email": "georgy@aol.com",
+    "password": "password12345",
+    "age":62,
+    "gender":"Female",
+    "phone":412038135,
+    "postcode":2000,
+    "fun_fact":"I am vegan",
+    "filename": "grandma5.jpg"
+  },
+  {
+    "name": "Manny",
+    "email": "manny@aol.com",
+    "password": "password12345",
+    "age": 68,
+    "gender":"Male",
+    "phone":412038135,
+    "postcode":2000,
+    "fun_fact":"I want to go to space",
+    "filename": "grandpa4.jpg"
   }
 ]

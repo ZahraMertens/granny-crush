@@ -35,13 +35,50 @@ const searchHandler = async (event) => {
         console.log(searchResults)
         
         const searchForm = document.querySelector('.search-form').remove();
+        const mainContainer = $('.search-main')
+        var newDiv = $("<div class='results-card-container column is-two-thirds'>");
+        mainContainer.append(
+          `<div class="column result-animation">
+             <p class="result-title result-title1 title is-1">Ready ?</p>
+             <p class="result-title result-title2 title is-1"> Match !</p>
+             <P class="result-title result-title3 title is-1"> Go !</P>
+          </div>`)
+        mainContainer.append(newDiv);
+        mainContainer.addClass('results-main');
+        // const imgSearch = $('#search-heart-img');
+        // imgSearch.addClass('result-heart-img')
+        const imgContainer = $('.search-header').remove()
+        
+
 
         for (let i = 0; i < searchResults.length; i++){
           console.log(searchResults[i].name)
+          console.log(searchResults[i].associated_hobbies[0].hobby_name) //Only returning the first hoppy in array
           //Append div to /search handlebars
-          ``
+          newDiv.append(`<div class="card-profile card">
+          <div class="card-image">
+            <figure class="image-container image is-4by3">
+              <img class="profile-img" src="/images/${searchResults[i].filename}" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content result-card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">${searchResults[i].name}, ${searchResults[i].age}</p>
+                <p class="result-span-card">${searchResults[i].gender}</p>
+                <br>
+                <p class=""><span class="result-span-card">Email: </span>${searchResults[i].email}</p>
+                <p class=""><span class="result-span-card">Phone: </span>${searchResults[i].phone}</p>
+                <p class=""><span class="result-span-card">Postcode: </span>${searchResults[i].postcode}</p>
+                <p class=""><span class="result-span-card">Hobbies: </span>${searchResults[i].associated_hobbies[0].hobby_name}</p>
+              </div>
+            </div>
+            <div class="content">
+              <p class=""><span class="result-span-card">Fun Fact: </span>${searchResults[i].fun_fact}</p>
+            </div>
+          </div>
+         </div>`);
         }
-
         // return searchResults
         // document.location.replace('/results');
       } else {
