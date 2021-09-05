@@ -40,7 +40,11 @@ router.get('/:id', async (req,res)=>{
 })
 
 // SEARCH for matches from search bar
+
+// !!! EXCLUDE LOGGED IN USER FROM SEARCH
 router.post('/search', async (req,res)=>{
+
+
     try{
         const userData = await User.findAll( 
             {
@@ -58,16 +62,28 @@ router.post('/search', async (req,res)=>{
                 postcode: req.body.postcode,
             }
         })
+
         // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
         if (userData.length===0){
             res.status(404).json("No users found")
             return
         }
            
-        const users = userData.map((user) => {
+        const usersAll = userData.map((user) => {
             return user.get({plain: true})
         });
 
+        console.log(usersAll)
+
+        const currentUserId = req.session.user_id;
+        console.log(currentUserId)
+
+        //Exlude the user who is logged into the account
+        const users = usersAll.filter((user) => {
+            return user.id !== currentUserId
+        });
+
+        console.log(users)
         // console.log(users) //returns object of user 
         //PG edit - returns the users array/object as a response for us to use in the fetch / front end. No need to store in DB. 
         res.status(200).json(users);
@@ -210,7 +226,29 @@ router.post('/logout', async (req, res) => {
     } else {
         res.status(404).end();
     }
-  });
+});
+
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+      const userData = await User.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+  
+      if (!userData) {
+        res.status(404).json({ message: 'No post found with this id!' });
+        return;
+      }
+
+      req.session.destroy(() => {
+        res.status(200).end();
+      });
+
+    } catch (err) {
+      res.status(500).json(err);
+    }
+});
 
     
 module.exports = router;

@@ -41,6 +41,31 @@ router.get('/search', withAuth, (req, res) => {
     logged_in: req.session.logged_in
   });
 });
+
+router.get('/profile', withAuth, async (req, res) => {
+
+  console.log(req.session.user_id);
+
+  try {
+    const userData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      }
+    });
+
+    const user = userData.get({plain: true});
+    console.log(user)
+
+    res.render('profile', {
+      user,
+      logged_in: req.session.logged_in
+    });
+
+  } catch (error) {
+    res.status(500).json({name: error.name, message: error.message})
+  }
+
+})
   
 
 // router.get('/results', withAuth, (req, res) => {
