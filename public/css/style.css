@@ -75,6 +75,14 @@
     margin-top: 5px;
 }
 
+.profile-main {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background: linear-gradient(rgb(214, 217, 248), 30%, rgb(214, 240, 220));
+    /* background: linear-gradient(70deg, rgb(163, 168, 241), rgb(235, 235, 235)); */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px inset;
+}
+
 /* ======= LOGIN PAGE ========= */
 
 .login-form {
@@ -190,6 +198,10 @@
 		transform: rotateX(30deg);
 		opacity: 0;
 	}
+}
+
+.modal-login-content {
+    text-align: center!important;
 }
 
 /* ======= HOME PAGE ========= */
@@ -370,3 +382,54 @@
     padding-bottom: 3px!important;
 }
 
+/* ======= PROFILE PAGE ========== */
+
+@keyframes fadein {
+     0%   { opacity: 0; }
+     100% { opacity: 1; }
+}
+
+.profile-card {
+    width: 70%;
+    /* padding-bottom: 120px!important;
+    padding-top: 120px!important; */
+    margin-left:auto!important;
+    margin-right: auto!important;
+    border-radius: 20px!important;
+    -webkit-animation: fadein 0.8s ease-in;
+     -moz-animation: fadein 0.8s ease-in;
+     animation: fadein 0.8s ease-in;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top:30px;
+}
+
+.profile-button-container{
+    text-align: end;
+}
+
+.profil-content-span {
+    font-weight: 750!important;
+}
+
+.profile-delete-p {
+    text-align: end!important;
+}
+
+.profile-delete {
+    color: red;
+}
+
+/* New styles for different card */
+.myprofile-image {
+    width: 400px!important;
+    height: 400px!important;
+    object-fit: cover;
+    border-radius: 50%!important;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.profile-image-container{
+   margin-left: auto!important;
+   margin-right: auto!important;
+}

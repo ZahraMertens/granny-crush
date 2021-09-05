@@ -14,9 +14,18 @@ const loginHandler = async (event) => {
         if(res.ok){
             document.location.replace("/")
         } else {
-            alert(res.error)
+            $('.modal').addClass('is-active')
+            //alert("Email and Password are not correct! Please try again or sign up if you haven't got an account!")
         }
     }
 }
 
 document.querySelector('.login-btn').addEventListener("click", loginHandler);
+
+function handleClose (event) {
+    event.preventDefault();
+    console.log("close")
+    $('.modal').removeClass('is-active')
+}
+
+document.querySelector('.modal-close-btn').addEventListener("click", handleClose);
