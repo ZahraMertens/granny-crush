@@ -78,17 +78,13 @@ const searchHandler = async (event) => {
             </div>
           </div>
          </div>`);
-        }
-        // return searchResults
-        // document.location.replace('/results');
+        };
+
       } else {
-        // document.location.replace('/search')
-        alert("There are no matches!")
+        $('.modal').addClass('is-active')
       }
     }
 }
-
-
 
 function createDropdownOpt () {
     const startAge = 60;
@@ -103,6 +99,13 @@ function createDropdownOpt () {
     document.getElementById('search-age1').innerHTML = optTag;
 }
 
+function handleClose (event) {
+  event.preventDefault();
+  console.log("close")
+  $('.modal').removeClass('is-active') //Close modal
+  document.location.reload(); //To remove input
+};
 
+document.querySelector('.modal-close-button').addEventListener("click", handleClose);
 createDropdownOpt();
 document.querySelector('.search-form').addEventListener("submit", searchHandler);    

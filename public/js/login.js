@@ -20,12 +20,11 @@ const loginHandler = async (event) => {
     }
 }
 
-document.querySelector('.login-btn').addEventListener("click", loginHandler);
-
 function handleClose (event) {
     event.preventDefault();
     console.log("close")
     $('.modal').removeClass('is-active')
-}
+};
 
+document.querySelector('.login-btn').addEventListener("click", loginHandler);
 document.querySelector('.modal-close-btn').addEventListener("click", handleClose);

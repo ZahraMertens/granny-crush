@@ -1,55 +1,5 @@
-.profile-card {
-    width: 600px;
-    border-radius: 20px!important;
-    -webkit-animation: fadein 0.8s ease-in;
-     -moz-animation: fadein 0.8s ease-in;
-     animation: fadein 0.8s ease-in;
-     margin-left: auto;
-     margin-right: auto;
-     margin-top:30px;
+main {
+    height: 930px;
+    background: rgb(255,255,255);
+    background: linear-gradient(300deg, rgb(164, 243, 194) 0%, rgba(255, 255, 255, 0.944) 60%, rgb(144, 111, 233) 100%);
 }
- 
-@keyframes fadein {
-     0%   { opacity: 0; }
-     100% { opacity: 1; }
-}
-
-.profile-subtitle {
-    margin-bottom: 13px!important;
-}
-
-.profile-img {
-    height: 400px!important;
-    object-fit: cover;
-    border-top-left-radius: 20px!important;
-    border-top-right-radius: 20px!important;
-}
-
-.profile-header-card {
-    display: inline!important;
-}
-
-.profile-card-button {
-    text-align: end;
-    padding-top: 0px!important;
-    padding-bottom: 0px!important;
-}
-
-.profil-content-span {
-    font-weight: 750!important;
-}
-
-.profile-delete-a {
-    text-align: end;
-}
-
-.profile-delete {
-    color: red;
-}
-
-/* .img { circular image
-    width: 400px!important;
-    height: 400px!important;
-    object-fit: cover;
-    border-radius: 50%;
-} */

@@ -12,7 +12,7 @@
       <form class="column search-form">
         <div class="columns search-age-container">
           <div class="column is-3 field">
-            <label class="search-label label">Min Age:</label>
+            <label class="search-label subtitle is-2 label">Min Age:</label>
             <div class="search-dropdown select">
                 <select id="search-age1">
                   {{!-- Loop from JS file to loop over age --}}
@@ -56,6 +56,23 @@
    <div class="column search-header">
      <img id="search-heart-img" src="/images/heart.jpg">
   </div>
+
+  <div class="modal">
+    <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="card">
+          <div class="card-content">
+            <div class="content modal-login-content is-subtitle-3">
+              <img src="/images/modalImage2.jpg" alt="Placeholder image">
+              <h2 class="subtitle is-5">Sorry, it looks like there are no matches at the moment...</h2>
+              <p class="subtitle is-5">Please try again later.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <button class="modal-close-button modal-close is-large" aria-label="close"></button>
+  </div>
+
 </main>
 
 {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}

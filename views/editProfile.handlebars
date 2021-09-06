@@ -1,0 +1,104 @@
+<div class="home-tab tabs is-large is-boxed is-centered">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li class="active-tab is-active"><a href="/profile">My Profile</a></li>
+    <li><a href="/search">Search</a></li>
+    <li><a>Chat</a></li>
+  </ul>
+</div>
+
+  <main class="editProfile-main">
+
+       <div class="card editProfile-card">
+        <div class="card-image">
+          <figure class="image">
+            <img class="myprofile-img" src="/images/{{user.filename}}" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                  <div class="editprofile-div-delete">
+                      <p id="deleteTag" class="editProfile-delete-p profile-delete" data-id="{{user.id}}">Delete Account</p>
+                  </div>
+                  <div class="editProfile-uploadImage-container file has-name">
+                   <label class="file-label">
+                     <input class="file-input" type="file" name="resume">
+                      <span class="file-cta">
+                      <span class="file-icon">
+                       <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Choose a file…
+                        </span>
+                        </span>
+                        <span class="file-name">
+                          Screen Shot 2017-07-29 at 15.54.25.png
+                        </span>
+                    </label>
+                  </div>
+                  <div class="field">
+                    <label class="label">Name</label>
+                     <div class="control">
+                       <textarea id="edit-name" class="textarea is-success" rows="1" placeholder="Textarea">{{user.name}}</textarea>
+                     </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Age</label>
+                     <div class="control">
+                       <textarea id="edit-age" class="textarea is-success" rows="1" placeholder="Textarea">{{user.age}}</textarea>
+                     </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Gender</label>
+                     <div class="control">
+                       <textarea id="edit-gender" class="textarea is-success" rows="1" placeholder="Textarea">{{user.gender}}</textarea>
+                     </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Email</label>
+                     <div class="control">
+                       <textarea id="edit-email" class="textarea is-success" rows="1" placeholder="Textarea">{{user.email}}</textarea>
+                     </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Phone</label>
+                     <div class="control">
+                       <textarea id="edit-phone" class="textarea is-success" rows="1" placeholder="Textarea">{{user.phone}}</textarea>
+                     </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Postcode</label>
+                     <div class="control">
+                       <textarea id="edit-postcode" class="textarea is-success" rows="1" placeholder="Textarea">{{user.postcode}}</textarea>
+                     </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Fun Fact</label>
+                     <div class="control">
+                       <textarea id="edit-fact" class="textarea is-success" rows="1" placeholder="Textarea">{{user.fun_fact}}</textarea>
+                     </div>
+                  </div>
+                  {{!-- <div class="field">
+                    <label class="label">Password</label>
+                     <div class="control">
+                       <input id="edit-password" class="input" type="password" placeholder="Password">
+                     </div>
+                  </div> --}}
+                  <div class="card-content editProfile-card-button">
+                    <a href="/profile">
+                      <button class="button is-link is-light" data-id="{{user.id}}">Cancel</button>
+                    </a>
+                    <button id="editProfile-btn-save" class="editProfile-btn-save button is-link" data-id="{{user.id}}">Save</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+
+     
+    </main>
+
+    
+    <script src="/js/profile.js"></script>
