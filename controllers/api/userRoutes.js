@@ -214,6 +214,16 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// router.post("/upload", (req, res) => {
+//     upload(req, res, (err) => {
+//         if(err){
+//             console.log('err')
+//         } else {
+//             console.log(req.file)
+//         }
+//     })
+// })
+
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body)
