@@ -8,7 +8,7 @@ const res = require("express/lib/response");
 
 //Set storage engine + define image name
 const storage = multer.diskStorage({
-  destination: "./public/uploads/",
+  destination: "./public/images/",
   filename: (req, file, cb) => {
     cb(
       null,
