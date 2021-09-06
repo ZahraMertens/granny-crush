@@ -47,7 +47,15 @@ router.get('/profile', withAuth, async (req, res) => {
   console.log(req.session.user_id);
 
   try {
-    const userData = await User.findOne({
+    const userData = await User.findOne(
+      {
+      include: [
+        { 
+          model: Hobby, 
+          through: UserHobby, 
+          as: 'associated_hobbies' 
+        }
+      ],
       where: {
         id: req.session.user_id,
       }

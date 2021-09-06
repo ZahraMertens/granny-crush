@@ -50,13 +50,13 @@ const updateHandler = async (event) => {
         console.log(postcode)
         const fun_fact = document.querySelector("#edit-fact").value.trim();
         console.log(fun_fact)
-        // const password = document.querySelector("#edit-password").value.trim();
-        // console.log(password)
+        const hobby_name = document.querySelector("input[type='radio'][name='answer']:checked").value;
+        console.log(hobby_name)
         
         if (name && age && gender && email && phone && postcode && fun_fact){
             const res = await fetch(`/api/users/${user_id}`, {
                 method: "PUT",
-                body: JSON.stringify({name, age, gender, email, phone, postcode, fun_fact}),
+                body: JSON.stringify({name, age, gender, email, phone, postcode, fun_fact, hobby_name}),
                 headers: { 'Content-Type': 'application/json' },
             });
 
