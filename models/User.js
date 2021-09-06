@@ -55,6 +55,7 @@ User.init(
     filename: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: 'placeholder.png',
     },
   },
   {

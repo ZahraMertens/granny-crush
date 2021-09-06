@@ -4,11 +4,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-//Multer
-const multer = require('multer');
-//Socket
-// const server = require('http').createServer(app);
-// const io = require('socket.io')(server)
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -30,19 +25,6 @@ const sess = {
   })
 };
 
-///!!!!!
-const storage = multer.diskStorage({
-  destination: './public/uploads/',
-  filename: function(req, file, cb) {
-    console.log("file", file)
-    fileExtension = file.originalname.split(".")[1]
-    cb(null, file.fieldname + "-" + Date.now() + "." + path.extname(file.originalname))
-  },
-})
-
-///!!!!!
-var upload = multer({ storage: storage }).single("picture");
-
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
@@ -54,13 +36,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(routes);
-
-
-//!!!!!!
-// app.post('/profile', upload.single('picture'), function (req, res, next) {
-//   // req.file is the `avatar` file
-//   // req.body will hold the text fields, if there were any
-// })
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
