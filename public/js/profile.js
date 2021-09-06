@@ -34,21 +34,6 @@ const updateHandler = async (event) => {
 
     if(event.target.hasAttribute('data-id')){
 
-    // const fileName = document.querySelector('.file-name').innerHTML
-    // console.log(fileName) //Gets file name
-
-    //     const res = await fetch(`/api/users/${user_id}`, {
-    //         method: "PUT",
-    //         body: JSON.stringify({name, age, gender, email, phone, postcode, fun_fact}),
-    //         headers: { 'Content-Type': 'application/json' },
-    //     });
-
-    //     if(res.ok){
-    //         document.location.replace(`/profile`)
-    //     } else {
-    //         alert(res.error)
-    //     }
-
         const user_id = event.target.getAttribute('data-id');
         console.log(user_id)
         const name = document.querySelector("#edit-name").value.trim();

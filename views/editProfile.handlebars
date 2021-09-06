@@ -21,7 +21,8 @@
                   <div class="editprofile-div-delete">
                       <p id="deleteTag" class="editProfile-delete-p profile-delete" data-id="{{user.id}}">Delete Account</p>
                   </div>
-                  <form action="/profile" method="POST" enctype="multipart/form-data" class="editProfile-uploadImage-container" id="file-js-example" class="file has-name">
+
+                  <form action="/api/users/profile" method="POST" enctype="multipart/form-data" class="editProfile-uploadImage-container" id="file-js-example" class="file has-name">
                     <label class="file-label">
                       <input class="file-input" type="file" name="picture">
                         <span class="file-cta">
@@ -38,6 +39,7 @@
                       </label>
                       <button type="submit" class="upload-img-button button is-link is-success">Upload Image</button>
                   </form>
+
                   <div class="field">
                     <label class="label">Name</label>
                      <div class="control">

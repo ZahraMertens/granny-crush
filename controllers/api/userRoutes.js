@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Hobby , UserHobby , UserMatch} = require('../../models');
 const { Op } = require("sequelize");
 const withAuth = require('../../utils/auth');
+const {checkFileType, upload, stotage} = require('../../utils/imageHelper')
 
 //get all users FOR INSOMNIA
 router.get('/', async (req,res)=>{
@@ -160,6 +161,7 @@ router.post('/search', async (req,res)=>{
 //     }
 // })
 
+//PUT INTO USER ROUTES
 router.put('/:id', withAuth, async (req, res) => {
    
     try{
@@ -214,15 +216,6 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// router.post("/upload", (req, res) => {
-//     upload(req, res, (err) => {
-//         if(err){
-//             console.log('err')
-//         } else {
-//             console.log(req.file)
-//         }
-//     })
-// })
 
 router.post('/signup', async (req, res) => {
     try {
@@ -280,6 +273,34 @@ router.delete('/:id', withAuth, async (req, res) => {
     } catch (err) {
       res.status(500).json(err);
     }
+});
+
+// MULTER ROUTES
+router.post("/profile", async (req, res) => {
+    upload(req, res, async (err) => {
+      if (err) {
+        console.log('error1')
+        console.log(err)
+        res.redirect("/profile")
+        } else {
+  
+        if (req.file == undefined) {
+          console.log("error2")
+          res.redirect("/profile")
+        } else {
+          console.log(req.file)
+          console.log("error3")
+
+          const userData = await User.update({filename: req.file.filename}, {
+            where: {
+              id: req.session.user_id,
+            },
+          })
+  
+           res.redirect("/profile")
+        }
+      }
+    });
 });
 
     
