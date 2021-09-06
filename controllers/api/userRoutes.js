@@ -160,6 +160,28 @@ router.post('/search', async (req,res)=>{
 //     }
 // })
 
+router.put('/:id', withAuth, async (req, res) => {
+   
+    try{
+  
+      const userData = await User.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      })
+  
+      if (!userData) {
+        res.status(404).json({message: 'The post data is invalid'});
+        return
+      }
+  
+      res.status(200).json(userData)
+  
+    } catch (error){
+      res.status(500).json({name: error.name, message: error.message})
+    }
+})
+
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({

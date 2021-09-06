@@ -58,7 +58,7 @@
 .homepage-main {
     height: 800px; 
     box-sizing: border-box;
-    background-image: url(../images/background11.png);
+    background-image: url(../images/background13.png);
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
@@ -80,6 +80,13 @@
     padding-bottom: 120px;
     background: linear-gradient(rgb(214, 217, 248), 30%, rgb(214, 240, 220));
     /* background: linear-gradient(70deg, rgb(163, 168, 241), rgb(235, 235, 235)); */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px inset;
+}
+
+.editProfile-main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: linear-gradient(rgb(214, 217, 248), 30%, rgb(214, 240, 220));
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px inset;
 }
 
@@ -217,21 +224,26 @@
 .home-tile-container {
   width: 1000px;
   margin-left: 600px;
+  position: relative;
 }
 
 .home-main-card {
     width: 900px;
     margin-left: auto;
     margin-right: auto;
-    border: solid 1px rgb(84, 84, 255);
     border-radius: 10px!important;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px!important;
+    position: absolute;
+    left: -2000px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
 }
 
 .home-main-content {
     font-size: 35px;
     text-align: center;
-    
 }
 
 .home-card-container{
@@ -241,6 +253,12 @@
    background-color: transparent!important;
    box-shadow: none!important;
    padding-top: 20px;
+   position: absolute;
+   left: -2000px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 0.5s;
+    animation: slide 0.5s forwards;
+    animation-delay: 0.5s;
 }
 
 .home-card {
@@ -254,19 +272,28 @@
 }
 
 .home-tile-one {
-    background-color: rgb(255, 115, 115)!important;
+    background-color: rgb(211, 240, 143)!important;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px!important;
 }
 
 .home-tile-two {
-    background-color: rgb(210, 255, 143)!important;
+    background-color: rgb(255, 142, 142)!important;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px!important;
 }
 
 .home-tile-three {
-    background-color: rgb(255, 248, 144)!important;
+    background-color: rgb(119, 230, 187)!important;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px!important;
 }
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
 
 /* ======= SIGNUP PAGE ========= */
 .signup-form {
@@ -280,7 +307,7 @@
 /* ========= SEARCH PAGE ========== */
 
 .search-form {
-    background-color: rgb(163, 161, 226);
+    background: linear-gradient(rgb(172, 139, 233), 40%, rgb(162, 224, 176));
     width: 400px!important;
     height: 400px;
     margin-left: 400px;
@@ -289,6 +316,9 @@
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-right: 30px;
+    -webkit-animation: fadein 0.6s ease-in;
+    -moz-animation: fadein 0.6s ease-in;
+    animation: fadein 0.6s ease-in;
 }
 
 .search-label {
@@ -316,6 +346,12 @@
   100% {
     margin-top: 5%;
   }
+}
+
+.search-span {
+    font-family: 'Satisfy', cursive;
+    color: rgb(47, 40, 51)!important;
+    font-weight: 600!important;
 }
 
 /* ===== RESULTS IN SERACH PAGE======= */
@@ -404,7 +440,7 @@
      margin-top:30px;
 }
 
-.profile-button-container{
+.profile-button-container {
     text-align: end;
 }
 
@@ -432,4 +468,32 @@
 .profile-image-container{
    margin-left: auto!important;
    margin-right: auto!important;
+}
+
+/* ======= EDIT PROFILE PAGE ========= */
+
+.editProfile-card{
+    width: 700px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.editprofile-div-delete {
+   padding-top: 10px!important;
+   padding-bottom: 50px!important;
+}
+
+.editProfile-delete-p {
+    text-align: end!important;
+}
+
+.editProfile-card-button{
+    text-align: end!important;
+}
+
+.editProfile-uploadImage-container {
+    width: 400px;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    padding-bottom: 40px!important;
 }
