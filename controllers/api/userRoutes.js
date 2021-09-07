@@ -166,6 +166,7 @@ router.post('/search', async (req,res)=>{
 router.put('/:id', withAuth, async (req, res) => {
     const {name, age, gender, email, phone, postcode, fun_fact, hobby_name} = req.body
  
+    try{
       const userData = await User.update({
           name: name,
           age: age,
