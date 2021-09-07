@@ -50,7 +50,8 @@ router.post('/search', async (req,res)=>{
         const userData = await User.findAll( 
             {
             include: [
-                { model: Hobby, 
+                {   
+                  model: Hobby, 
                   through: UserHobby, 
                   as: 'associated_hobbies' 
                 }
@@ -164,8 +165,7 @@ router.post('/search', async (req,res)=>{
 //PUT INTO USER ROUTES
 router.put('/:id', withAuth, async (req, res) => {
     const {name, age, gender, email, phone, postcode, fun_fact, hobby_name} = req.body
-    try{
-  
+ 
       const userData = await User.update({
           name: name,
           age: age,
