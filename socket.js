@@ -1,5 +1,4 @@
-const express = require("express");
-const socket = require("socket.io");
+
 
 // App setup
 const PORT = 5000;
