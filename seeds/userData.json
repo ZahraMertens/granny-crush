@@ -8,6 +8,7 @@
     "phone":412038495,
     "postcode":2000,
     "fun_fact":"I like knitting",
+    "hobby_id":1,
     "filename": "grandma1.jpg"
   },
   {
@@ -19,6 +20,7 @@
     "phone":412568495,
     "postcode":2011,
     "fun_fact":"I have 20 cats",
+    "hobby_id":2,
     "filename": "grandpa1.jpg"
   },
   {
@@ -30,6 +32,7 @@
     "phone":412038135,
     "postcode":2000,
     "fun_fact":"I have been married 7 times",
+    "hobby_id":3,
     "filename": "grandma2.jpg"
   },
   {
@@ -41,6 +44,7 @@
     "phone":412038136,
     "postcode":2001,
     "fun_fact":"I have never been married",
+    "hobby_id":4,
     "filename": "grandpa2.jpg"
   },
   {
@@ -52,6 +56,7 @@
     "phone":412038135,
     "postcode":2000,
     "fun_fact":"I love to travel",
+    "hobby_id":3,
     "filename": "grandma3.jpg"
   },
   {
@@ -63,6 +68,7 @@
     "phone":412038135,
     "postcode":2000,
     "fun_fact":"I like dogs",
+    "hobby_id":4,
     "filename": "grandma4.jpg"
   },
   {
@@ -74,6 +80,7 @@
     "phone":412038135,
     "postcode":2000,
     "fun_fact":"I have never been married",
+    "hobby_id":3,
     "filename": "grandpa3.jpg"
   },
   {
@@ -85,6 +92,7 @@
     "phone":412038135,
     "postcode":2000,
     "fun_fact":"I am vegan",
+    "hobby_id":5,
     "filename": "grandma5.jpg"
   },
   {
@@ -96,6 +104,7 @@
     "phone":412038135,
     "postcode":2000,
     "fun_fact":"I want to go to space",
+    "hobby_id":1,
     "filename": "grandpa4.jpg"
   }
 ]

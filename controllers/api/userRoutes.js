@@ -1,41 +1,47 @@
 const router = require('express').Router();
-const { User, Hobby , UserHobby , UserMatch} = require('../../models');
+const { User, Hobby,
+    // UserHobby , 
+    UserMatch } = require('../../models');
 const { Op } = require("sequelize");
 const withAuth = require('../../utils/auth');
-const {checkFileType, upload, stotage} = require('../../utils/imageHelper')
+const { checkFileType, upload, stotage } = require('../../utils/imageHelper')
 
 //get all users FOR INSOMNIA
-router.get('/', async (req,res)=>{
-    
-    try{
-        
+router.get('/', async (req, res) => {
+
+    try {
+
         const userData = await User.findAll({
-            include: [{ model: Hobby, through: UserHobby, as: 'associated_hobbies' }]
+            include: [{
+                model: Hobby,
+                // through: UserHobby, as: 'associated_hobbies' 
+            }]
         })
         res.status(200).json(userData)
     }
-    catch(e){
+    catch (e) {
         console.log(e)
     }
 })
 
 //get all users by id
-router.get('/:id', async (req,res)=>{
-    
-    try{
-        
-        const userData = await User.findByPk(req.params.id, 
+router.get('/:id', async (req, res) => {
+
+    try {
+
+        const userData = await User.findByPk(req.params.id,
             {
-            include: [
-                { model: Hobby, 
-                  through: UserHobby, 
-                  as: 'associated_hobbies' 
-                }
-            ]
-        })
+                include: [
+                    {
+                        model: Hobby,
+                        //   through: UserHobby, 
+                        //   as: 'associated_hobbies' 
+                    }
+                ]
+            })
         res.status(200).json(userData)
     }
-    catch(e){
+    catch (e) {
         console.log(e)
     }
 })
@@ -43,36 +49,36 @@ router.get('/:id', async (req,res)=>{
 // SEARCH for matches from search bar
 
 // !!! EXCLUDE LOGGED IN USER FROM SEARCH
-router.post('/search', async (req,res)=>{
+router.post('/search', async (req, res) => {
 
 
-    try{
-        const userData = await User.findAll( 
+    try {
+        const userData = await User.findAll(
             {
-            include: [
-                {   
-                  model: Hobby, 
-                  through: UserHobby, 
-                  as: 'associated_hobbies' 
+                include: [
+                    {
+                        model: Hobby,
+                        //   through: UserHobby, 
+                        //   as: 'associated_hobbies' 
+                    }
+                ],
+                where: {
+                    age: {
+                        [Op.between]: [req.body.minAge, req.body.maxAge]
+                    },
+                    gender: req.body.gender,
+                    postcode: req.body.postcode,
                 }
-            ],
-            where: {
-                age: {
-                    [Op.between]: [ req.body.minAge ,  req.body.maxAge]
-                },
-                gender: req.body.gender,
-                postcode: req.body.postcode,
-            }
-        })
+            })
 
         // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
-        if (userData.length===0){
+        if (userData.length === 0) {
             res.status(404).json("No users found")
             return
         }
-           
+
         const usersAll = userData.map((user) => {
-            return user.get({plain: true})
+            return user.get({ plain: true })
         });
 
         console.log(usersAll)
@@ -98,10 +104,10 @@ router.post('/search', async (req,res)=>{
 
         //Create match between user with id 4 and the results
         // UserMatch.bulkCreate(newUserMatch)
-        
+
     }
-    catch(error){
-        res.status(500).json({name: error.name, message: error.message})    
+    catch (error) {
+        res.status(500).json({ name: error.name, message: error.message })
     }
 })
 
@@ -130,7 +136,7 @@ router.post('/search', async (req,res)=>{
 //             res.status(404).json("No users found")
 //             return
 //         }
-           
+
 //         const users = userData.map((user) => {
 //             return user.get({plain: true})
 //         });
@@ -164,49 +170,41 @@ router.post('/search', async (req,res)=>{
 
 //PUT INTO USER ROUTES
 router.put('/:id', withAuth, async (req, res) => {
-    const {name, age, gender, email, phone, postcode, fun_fact, hobby_name} = req.body
- 
-    try{
-      const userData = await User.update({
-          name: name,
-          age: age,
-          gender: gender, 
-          email: email, 
-          phone: phone, 
-          postcode: postcode, 
-          fun_fact: fun_fact
-      }, {
-        where: {
-          id: req.params.id,
-        },
-      })
-      
-      const hobbyData = await Hobby.findAll({
-        where: {
-            hobby_name: hobby_name
-        }
-    })
-        const hobbyId = hobbyData.map((hobby) => hobby.get({ plain: true }))
-        console.log(hobbyId)
+    const { name, age, gender, email, phone, postcode, fun_fact, hobby_name } = req.body
 
-        const updatedHobbyData = await UserHobby.update({
-            hobby_id: hobbyId.id
-        },{
-            where:{
-                user_id: req.params.id
+    try {
+        const hobbyData = await Hobby.findOne({
+            where: {
+                hobby_name: hobby_name
             }
+        })
+        console.log(hobbyData)
+        const hobbyId = hobbyData.get({ plain: true });
+
+        const userData = await User.update({
+            name: name,
+            age: age,
+            gender: gender,
+            email: email,
+            phone: phone,
+            postcode: postcode,
+            fun_fact: fun_fact,
+            hobby_id: hobbyId.id
+        }, {
+            where: {
+                id: req.params.id,
+            },
+        })
+
+        if (!userData) {
+            res.status(404).json({ message: 'The post data is invalid' });
+            return
         }
-        )
-        
-      if (!userData || !hobbyData) {
-        res.status(404).json({message: 'The post data is invalid'});
-        return
-      }
-  
-      res.status(200).json(userData)
-  
-    } catch (error){
-      res.status(500).json({name: error.name, message: error.message})
+
+        res.status(200).json(userData)
+
+    } catch (error) {
+        res.status(500).json({ name: error.name, message: error.message })
     }
 })
 
@@ -218,15 +216,15 @@ router.post('/login', async (req, res) => {
             }
         });
 
-        if (!userData){
+        if (!userData) {
             alert("Incorrect Email or Password! Please try again")
             return;
         }
-        
+
         const validPass = await userData.checkPassword(req.body.password);
 
-        if (!validPass){
-            res.status(400).json({message: 'Incorrect email or password'});
+        if (!validPass) {
+            res.status(400).json({ message: 'Incorrect email or password' });
             return;
         }
 
@@ -234,28 +232,44 @@ router.post('/login', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
 
-            res.status(200).json({user: userData, message: 'Login Success!' })
+            res.status(200).json({ user: userData, message: 'Login Success!' })
         })
 
     } catch (error) {
-        res.status(404).json({message: "specific error to not show the user where the error is"})
+        res.status(404).json({ message: "specific error to not show the user where the error is" })
     }
 });
 
 
 router.post('/signup', async (req, res) => {
     try {
-        const userData = await User.create(req.body)
-        const hobbyData = await Hobby.findAll({
+        const { name, password, age, gender, email, phone, postcode, fun_fact, hobby_name } = req.body
+        //find hobby id
+        const hobbyData = await Hobby.findOne({
             where: {
                 hobby_name: req.body.hobby_name
             }
         })
-        const hobbyId = hobbyData.map((hobby) => hobby.get({ plain: true }))
-        const userHobbyData = UserHobby.create({
-            user_id: userData.id,
-            hobby_id: hobbyId[0].id
-        })
+
+        const hobbyId = hobbyData.get({ plain: true });
+
+        const userData = await User.create(
+            {
+                name: name,
+                age: age,
+                gender: gender,
+                password: password,
+                email: email,
+                phone: phone,
+                postcode: postcode,
+                fun_fact: fun_fact,
+                hobby_id: hobbyId.id
+            })
+
+        // const userHobbyData = UserHobby.create({
+        //     user_id: userData.id,
+        //     hobby_id: hobbyId[0].id
+        // })
 
         req.session.save(() => {
             req.session.user_id = userData.id;
@@ -269,10 +283,10 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/logout', async (req, res) => {
-    
+
     if (req.session.logged_in) {
         req.session.destroy(() => {
-          res.status(204).end();
+            res.status(204).end();
         });
     } else {
         res.status(404).end();
@@ -281,53 +295,53 @@ router.post('/logout', async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-      const userData = await User.destroy({
-        where: {
-          id: req.params.id,
-        },
-      });
-  
-      if (!userData) {
-        res.status(404).json({ message: 'No post found with this id!' });
-        return;
-      }
+        const userData = await User.destroy({
+            where: {
+                id: req.params.id,
+            },
+        });
 
-      req.session.destroy(() => {
-        res.status(200).end();
-      });
+        if (!userData) {
+            res.status(404).json({ message: 'No post found with this id!' });
+            return;
+        }
+
+        req.session.destroy(() => {
+            res.status(200).end();
+        });
 
     } catch (err) {
-      res.status(500).json(err);
+        res.status(500).json(err);
     }
 });
 
 // MULTER ROUTES
 router.post("/profile", async (req, res) => {
     upload(req, res, async (err) => {
-      if (err) {
-        console.log('error1')
-        console.log(err)
-        res.redirect("/profile")
+        if (err) {
+            console.log('error1')
+            console.log(err)
+            res.redirect("/profile")
         } else {
-  
-        if (req.file == undefined) {
-          console.log("error2")
-          res.redirect("/profile")
-        } else {
-          console.log(req.file)
-          console.log("error3")
 
-          const userData = await User.update({filename: req.file.filename}, {
-            where: {
-              id: req.session.user_id,
-            },
-          })
-  
-           res.redirect("/profile")
+            if (req.file == undefined) {
+                console.log("error2")
+                res.redirect("/profile")
+            } else {
+                console.log(req.file)
+                console.log("error3")
+
+                const userData = await User.update({ filename: req.file.filename }, {
+                    where: {
+                        id: req.session.user_id,
+                    },
+                })
+
+                res.redirect("/profile")
+            }
         }
-      }
     });
 });
 
-    
+
 module.exports = router;

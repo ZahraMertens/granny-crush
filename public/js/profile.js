@@ -53,7 +53,7 @@ const updateHandler = async (event) => {
         const hobby_name = document.querySelector("input[type='radio'][name='answer']:checked").value;
         console.log(hobby_name)
         
-        if (name && age && gender && email && phone && postcode && fun_fact){
+        if (name && age && gender && email && phone && postcode && fun_fact && hobby_name){
             const res = await fetch(`/api/users/${user_id}`, {
                 method: "PUT",
                 body: JSON.stringify({name, age, gender, email, phone, postcode, fun_fact, hobby_name}),

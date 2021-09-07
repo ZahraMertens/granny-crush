@@ -41,7 +41,7 @@ User.init(
         allowNull: false,
     },
     phone: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull: false,
     },
     postcode: {
@@ -51,6 +51,14 @@ User.init(
     fun_fact: {
         type:DataTypes.STRING,
         allowNull: false,
+    },
+    hobby_id: {
+      type:DataTypes.INTEGER,
+      references:{
+        model:'hobby',
+        key:'id',
+      }
+
     },
     filename: {
       type: DataTypes.STRING,

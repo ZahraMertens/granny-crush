@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { Hobby, User, UserHobby, UserMatch } = require('../models');
+const { Hobby, User, 
+  // UserHobby, 
+  UserMatch } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
@@ -51,8 +53,6 @@ router.get('/profile', withAuth, async (req, res) => {
       include: [
             {   
               model: Hobby, 
-              through: UserHobby, 
-              as: 'associated_hobbies' 
             }
         ],
         where: {
@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({plain: true});
     //console.log(user.associated_hobbies[0].hobby_name)
 
-    const hobby = user.associated_hobbies[0].hobby_name;
+    const hobby = user.hobby.hobby_name;
     
     res.render('profile', {
       user,
