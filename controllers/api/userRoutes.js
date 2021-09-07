@@ -164,39 +164,40 @@ router.post('/search', async (req,res)=>{
 
 //PUT INTO USER ROUTES
 router.put('/:id', withAuth, async (req, res) => {
-   
-    try{
-  
-      const userData = await User.update(req.body, {
-            where: {
-              id: req.params.id,
-            },
-      });
+    const {name, age, gender, email, phone, postcode, fun_fact, hobby_name} = req.body
+ 
+      const userData = await User.update({
+          name: name,
+          age: age,
+          gender: gender, 
+          email: email, 
+          phone: phone, 
+          postcode: postcode, 
+          fun_fact: fun_fact
+      }, {
+        where: {
+          id: req.params.id,
+        },
+      })
+      
+      const hobbyData = await Hobby.findAll({
+        where: {
+            hobby_name: hobby_name
+        }
+    })
+        const hobbyId = hobbyData.map((hobby) => hobby.get({ plain: true }))
+        console.log(hobbyId)
 
-    //   const hobbyData = await Hobby.findOne({
-    //       where: {
-    //           hobby_name: req.body.hobby_name
-    //       }
-    //   })
-
-    //   const hobby = hobbyData.get({plain: true});
-    //   console.log(hobby.id)
-
-    //   const hobbyUser = await UserHobby.update(hobby.id, {
-    //      where:{
-    //          user_id: req.params.id,
-    //      }
-    //   })
-
-    //   const hobbyUpdate = hobbyUser.get({plain: true})
-    //   console.log(hobbyUpdate)
-    //   const hobbyId = hobbyData.map((hobby) => hobby.get({ plain: true }))
-    //   const userHobbyData = UserHobby.create({
-    //     user_id: userData.id,
-    //     hobby_id: hobbyId[0].id
-    //   })
-  
-      if (!userData) {
+        const updatedHobbyData = await UserHobby.update({
+            hobby_id: hobbyId.id
+        },{
+            where:{
+                user_id: req.params.id
+            }
+        }
+        )
+        
+      if (!userData || !hobbyData) {
         res.status(404).json({message: 'The post data is invalid'});
         return
       }
