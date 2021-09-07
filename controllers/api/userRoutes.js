@@ -163,16 +163,41 @@ router.post('/search', async (req,res)=>{
 
 //PUT INTO USER ROUTES
 router.put('/:id', withAuth, async (req, res) => {
-   
+    const {name, age, gender, email, phone, postcode, fun_fact, hobby_name} = req.body
     try{
   
-      const userData = await User.update(req.body, {
+      const userData = await User.update({
+          name: name,
+          age: age,
+          gender: gender, 
+          email: email, 
+          phone: phone, 
+          postcode: postcode, 
+          fun_fact: fun_fact
+      }, {
         where: {
           id: req.params.id,
         },
       })
-  
-      if (!userData) {
+      
+      const hobbyData = await Hobby.findAll({
+        where: {
+            hobby_name: hobby_name
+        }
+    })
+        const hobbyId = hobbyData.map((hobby) => hobby.get({ plain: true }))
+        console.log(hobbyId)
+
+        const updatedHobbyData = await UserHobby.update({
+            hobby_id: hobbyId.id
+        },{
+            where:{
+                user_id: req.params.id
+            }
+        }
+        )
+        
+      if (!userData || !hobbyData) {
         res.status(404).json({message: 'The post data is invalid'});
         return
       }
