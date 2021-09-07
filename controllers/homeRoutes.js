@@ -103,17 +103,17 @@ router.get('/edit/profile', withAuth, async (req, res) => {
 })
   
 
-// router.get('/results', withAuth, (req, res) => {
+router.get('/chat', withAuth, (req, res) => {
 
-//   if (!req.session.logged_in) {
-//     res.redirect('/login');
-//     return;
-//   }
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
 
-//   res.render('results', {
-//     logged_in: req.session.logged_in
-//   });
-// });
+  res.render('chat', {
+    logged_in: req.session.logged_in
+  });
+});
 
 
 module.exports = router;
