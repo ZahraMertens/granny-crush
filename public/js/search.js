@@ -53,7 +53,7 @@ const searchHandler = async (event) => {
 
         for (let i = 0; i < searchResults.length; i++){
           console.log(searchResults[i].name)
-          console.log(searchResults[i].associated_hobbies[0].hobby_name) //Only returning the first hoppy in array
+          console.log(searchResults[i].hobby.hobby_name) //Only returning the first hoppy in array
           //Append div to /search handlebars
           newDiv.append(`<div class="card-profile card">
           <div class="card-image">
@@ -70,7 +70,7 @@ const searchHandler = async (event) => {
                 <p class=""><span class="result-span-card">Email: </span>${searchResults[i].email}</p>
                 <p class=""><span class="result-span-card">Phone: </span>${searchResults[i].phone}</p>
                 <p class=""><span class="result-span-card">Postcode: </span>${searchResults[i].postcode}</p>
-                <p class=""><span class="result-span-card">Hobbies: </span>${searchResults[i].associated_hobbies[0].hobby_name}</p>
+                <p class=""><span class="result-span-card">Hobbies: </span>${searchResults[i].hobby.hobby_name}</p>
               </div>
             </div>
             <div class="content">
