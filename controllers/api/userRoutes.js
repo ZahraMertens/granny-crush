@@ -50,7 +50,8 @@ router.post('/search', async (req,res)=>{
         const userData = await User.findAll( 
             {
             include: [
-                { model: Hobby, 
+                {   
+                  model: Hobby, 
                   through: UserHobby, 
                   as: 'associated_hobbies' 
                 }
@@ -167,10 +168,33 @@ router.put('/:id', withAuth, async (req, res) => {
     try{
   
       const userData = await User.update(req.body, {
-        where: {
-          id: req.params.id,
-        },
-      })
+            where: {
+              id: req.params.id,
+            },
+      });
+
+    //   const hobbyData = await Hobby.findOne({
+    //       where: {
+    //           hobby_name: req.body.hobby_name
+    //       }
+    //   })
+
+    //   const hobby = hobbyData.get({plain: true});
+    //   console.log(hobby.id)
+
+    //   const hobbyUser = await UserHobby.update(hobby.id, {
+    //      where:{
+    //          user_id: req.params.id,
+    //      }
+    //   })
+
+    //   const hobbyUpdate = hobbyUser.get({plain: true})
+    //   console.log(hobbyUpdate)
+    //   const hobbyId = hobbyData.map((hobby) => hobby.get({ plain: true }))
+    //   const userHobbyData = UserHobby.create({
+    //     user_id: userData.id,
+    //     hobby_id: hobbyId[0].id
+    //   })
   
       if (!userData) {
         res.status(404).json({message: 'The post data is invalid'});

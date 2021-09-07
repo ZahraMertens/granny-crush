@@ -48,16 +48,26 @@ router.get('/profile', withAuth, async (req, res) => {
 
   try {
     const userData = await User.findOne({
-      where: {
+      include: [
+            {   
+              model: Hobby, 
+              through: UserHobby, 
+              as: 'associated_hobbies' 
+            }
+        ],
+        where: {
         id: req.session.user_id,
       }
     });
 
     const user = userData.get({plain: true});
-    console.log(user)
+    //console.log(user.associated_hobbies[0].hobby_name)
 
+    const hobby = user.associated_hobbies[0].hobby_name;
+    
     res.render('profile', {
       user,
+      hobby,
       logged_in: req.session.logged_in
     });
 

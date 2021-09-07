@@ -82,12 +82,43 @@
                        <textarea id="edit-fact" class="textarea is-success" rows="1" placeholder="Textarea">{{user.fun_fact}}</textarea>
                      </div>
                   </div>
-                  {{!-- <div class="field">
-                    <label class="label">Password</label>
-                     <div class="control">
-                       <input id="edit-password" class="input" type="password" placeholder="Password">
-                     </div>
-                  </div> --}}
+                              <div class="control">
+                <label class="label is-normal">Hobby:</label>
+                  <div id="signup-hobby">
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Knitting">
+                        Knitting
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Woodworking">
+                        Woodworking
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Cars">
+                        Cars
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Cats">
+                        Cats
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Painting">
+                        Painting
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Karaoke">
+                        Karaoke
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Videogames">
+                        Videogames
+                    </label>
+                    <label class="radio">
+                      <input type="radio" name="answer" value="Reading" checked>
+                        Reading
+                    </label>
+                  </div>
+                 </div>
                   <div class="card-content editProfile-card-button">
                     <a href="/profile">
                       <button class="button is-link is-light" data-id="{{user.id}}">Cancel</button>
