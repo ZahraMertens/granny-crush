@@ -1,4 +1,32 @@
+<div class="card-profile card">
+          <div class="card-image">
+            <figure class="image-container image is-4by3">
+              <img class="profile-img" src="/images/${searchResults[i].filename}" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content result-card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">${searchResults[i].name}, ${searchResults[i].age}</p>
+                <p class="result-span-card">${searchResults[i].gender}</p>
+                <br>
+                <p class=""><span class="result-span-card">Email: </span>${searchResults[i].email}</p>
+                <p class=""><span class="result-span-card">Phone: </span>${searchResults[i].phone}</p>
+                <p class=""><span class="result-span-card">Postcode: </span>${searchResults[i].postcode}</p>
+                <p class=""><span class="result-span-card">Hobbies: </span>${searchResults[i].hobby.hobby_name}</p>
+              </div>
+            </div>
+            <div class="content">
+              <p class=""><span class="result-span-card">Fun Fact: </span>${searchResults[i].fun_fact}</p>
+            </div>
+          </div>
+         </div>
 
+
+
+
+
+{{!-- 
  <ul id="messages"></ul>
   <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>
@@ -8,4 +36,4 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io();
-</script>
+</script> --}}

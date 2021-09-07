@@ -49,110 +49,113 @@ router.get('/:id', async (req, res) => {
 // SEARCH for matches from search bar
 
 // !!! EXCLUDE LOGGED IN USER FROM SEARCH
-router.post('/search', async (req, res) => {
+// router.post('/results', async (req, res) => {
 
-
-    try {
-        const userData = await User.findAll(
-            {
-                include: [
-                    {
-                        model: Hobby,
-                        //   through: UserHobby, 
-                        //   as: 'associated_hobbies' 
-                    }
-                ],
-                where: {
-                    age: {
-                        [Op.between]: [req.body.minAge, req.body.maxAge]
-                    },
-                    gender: req.body.gender,
-                    postcode: req.body.postcode,
-                }
-            })
-
-        // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
-        if (userData.length === 0) {
-            res.status(404).json("No users found")
-            return
-        }
-
-        const usersAll = userData.map((user) => {
-            return user.get({ plain: true })
-        });
-
-        console.log(usersAll)
-
-        const currentUserId = req.session.user_id;
-        console.log(currentUserId)
-
-        //Exlude the user who is logged into the account
-        const users = usersAll.filter((user) => {
-            return user.id !== currentUserId
-        });
-
-        console.log(users)
-        // console.log(users) //returns object of user 
-        //PG edit - returns the users array/object as a response for us to use in the fetch / front end. No need to store in DB. 
-        res.status(200).json(users);
-
-        // const currentUser = req.session.user_id
-        // console.log(currentUser) //Returns current user id "4"
-
-        // const usersId = users.map(({id}) => id);
-        // console.log(usersId) //Returns an array of the users matches ids [ 1, 2 ]
-
-        //Create match between user with id 4 and the results
-        // UserMatch.bulkCreate(newUserMatch)
-
-    }
-    catch (error) {
-        res.status(500).json({ name: error.name, message: error.message })
-    }
-})
-
-// router.get('/search/:minAge/:maxAge/:gender/:postcode', withAuth, async (req,res) => {
-
-//     console.log(req.params)
-//     try{
-//         const userData = await User.findAll( 
+//     try {
+//         const userData = await User.findAll(
 //             {
-//             include: [
-//                 { model: Hobby, 
-//                   through: UserHobby, 
-//                   as: 'associated_hobbies' 
+//                 include: [
+//                     {
+//                         model: Hobby,
+//                         //   through: UserHobby, 
+//                         //   as: 'associated_hobbies' 
+//                     }
+//                 ],
+//                 where: {
+//                     age: {
+//                         [Op.between]: [req.body.minAge, req.body.maxAge]
+//                     },
+//                     gender: req.body.gender,
+//                     postcode: req.body.postcode,
 //                 }
-//             ],
-//             where: {
-//                 age: {
-//                     [Op.between]: [ req.params.minAge ,  req.params.maxAge]
-//                 },
-//                 gender: req.params.gender,
-//                 postcode: req.params.postcode,
-//             }
-//         })
+//             })
+
 //         // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
-//         if (userData.length===0){
+//         if (userData.length === 0) {
 //             res.status(404).json("No users found")
 //             return
 //         }
 
-//         const users = userData.map((user) => {
-//             return user.get({plain: true})
+//         const usersAll = userData.map((user) => {
+//             return user.get({ plain: true })
+//         });
+
+//         console.log(usersAll)
+
+//         const currentUserId = req.session.user_id;
+//         console.log(currentUserId)
+
+//         //Exlude the user who is logged into the account
+//         const users = usersAll.filter((user) => {
+//             return user.id !== currentUserId
 //         });
 
 //         console.log(users)
+//         // console.log(users) //returns object of user 
+//         //PG edit - returns the users array/object as a response for us to use in the fetch / front end. No need to store in DB. 
+//         // res.status(200).json(users);
+//         // res.render('results', {
+//         //     // users,
+//         //     // logged_in: req.session.logged_in,
+//         //     // user_id: req.session.user_id,
+//         // })
 
-//         res.render('results', {
-//             users,
-//             logged_in: req.session.logged_in
-//         })
+//         // const currentUser = req.session.user_id
+//         // console.log(currentUser) //Returns current user id "4"
+
+//         // const usersId = users.map(({id}) => id);
+//         // console.log(usersId) //Returns an array of the users matches ids [ 1, 2 ]
+
+//         //Create match between user with id 4 and the results
+//         // UserMatch.bulkCreate(newUserMatch)
+
 //     }
-//     catch(error){
-//         console.log(error)
-//         res.status(500).json({name: error.name, message: error.message})    
+//     catch (error) {
+//         res.status(500).json({ name: error.name, message: error.message })
 //     }
 // })
+
+router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
+
+    console.log(req.params)
+    try{
+        const userData = await User.findAll( 
+            {
+            include: [
+                { model: Hobby, 
+                }
+            ],
+            where: {
+                age: {
+                    [Op.between]: [ req.params.minAge ,  req.params.maxAge]
+                },
+                gender: req.params.gender,
+                postcode: req.params.postcode,
+            }
+        })
+        // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
+        if (userData.length === 0){
+
+            res.render('noResults', {
+                logged_in: req.session.logged_in
+            })
+            return
+        }
+           
+        const users = userData.map((user) => {
+            return user.get({plain: true})
+        });
+
+        res.render('results', {
+            users,
+            logged_in: req.session.logged_in
+        })
+    }
+    catch(error){
+        console.log(error)
+        res.status(500).json({name: error.name, message: error.message})    
+    }
+})
 
 
 // get all users matched 

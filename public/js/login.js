@@ -15,7 +15,6 @@ const loginHandler = async (event) => {
             document.location.replace("/")
         } else {
             $('.modal').addClass('is-active')
-            //alert("Email and Password are not correct! Please try again or sign up if you haven't got an account!")
         }
     }
 }
