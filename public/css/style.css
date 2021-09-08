@@ -75,6 +75,11 @@
     margin-top: 5px;
 }
 
+.results-main {
+    margin-top: 5px;
+    height: 100%;
+}
+
 .profile-main {
     padding-top: 120px;
     padding-bottom: 120px;
@@ -354,7 +359,7 @@
     font-weight: 600!important;
 }
 
-/* ===== RESULTS IN SERACH PAGE======= */
+/* ===== RESULTS PAGE ======= */
 
 .card-profile {
    display: inline-block;
@@ -470,6 +475,13 @@
    margin-right: auto!important;
 }
 
+.heart-btn-container{
+    text-align: end;
+}
+
+.heart-button:hover {
+  background-color: rgb(101, 189, 83)!important;
+}
 /* ======= EDIT PROFILE PAGE ========= */
 
 .editProfile-card{

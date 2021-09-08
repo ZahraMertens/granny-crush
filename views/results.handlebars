@@ -2,8 +2,49 @@
   <ul>
     <li><a href="/">Home</a></li>
     <li><a>My Profile</a></li>
-    <li class="is-active"><a href="/search">Search</a></li>
+    <li class="is-active"><a href="/search">Results</a></li>
     <li><a>Chat</a></li>
   </ul>
 </div>
 
+<main class="columns results-main">
+
+  <div class="column result-animation">
+    <p class="result-title result-title1 title is-1">Ready ?</p>
+    <p class="result-title result-title2 title is-1"> Match !</p>
+    <P class="result-title result-title3 title is-1"> Go !</P>
+  </div>
+
+  <div class='results-card-container column is-two-thirds'>
+  {{#each users as |user|}}
+  <div class="card-profile card">
+    <div class="card-image">
+      <figure class="image-container image is-4by3">
+        <img class="profile-img" src="/images/{{user.filename}}" alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content result-card-content">
+      <div class="media">
+        <div class="media-content">
+          <div class="heart-btn-container">
+            <button class="heart-button button is-danger py-1" data-id="{{user.id}}"> 
+              <i class="fas fa-heart fa-2x"></i>
+            </button>
+           </div>
+              <p class="title is-4">{{user.name}}, {{user.age}}</p>
+              <p class="result-span-card">{{user.gender}}</p>
+              <br>
+              <p class=""><span class="result-span-card">Postcode: </span>{{user.postcode}}</p>
+              <p class=""><span class="result-span-card">Hobbies: </span>{{user.hobby.hobby_name}}</p>
+         </div>
+       </div>
+        <div class="content">
+          <p class=""><span class="result-span-card">Fun Fact: </span>{{user.fun_fact}}</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  </div>
+</main>
+
+<script src="/js/result.js"></script>
