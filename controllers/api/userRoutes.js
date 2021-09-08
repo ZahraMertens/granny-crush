@@ -4,7 +4,7 @@ const { User, Hobby,
     UserMatch } = require('../../models');
 const { Op } = require("sequelize");
 const withAuth = require('../../utils/auth');
-const { checkFileType, upload, stotage } = require('../../utils/imageHelper')
+const { checkFileType, upload, storage } = require('../../utils/imageHelper')
 
 //get all users FOR INSOMNIA
 router.get('/', async (req, res) => {
