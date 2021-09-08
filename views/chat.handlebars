@@ -1,39 +1,57 @@
-<div class="card-profile card">
-          <div class="card-image">
-            <figure class="image-container image is-4by3">
-              <img class="profile-img" src="/images/${searchResults[i].filename}" alt="Placeholder image">
-            </figure>
-          </div>
-          <div class="card-content result-card-content">
-            <div class="media">
-              <div class="media-content">
-                <p class="title is-4">${searchResults[i].name}, ${searchResults[i].age}</p>
-                <p class="result-span-card">${searchResults[i].gender}</p>
-                <br>
-                <p class=""><span class="result-span-card">Email: </span>${searchResults[i].email}</p>
-                <p class=""><span class="result-span-card">Phone: </span>${searchResults[i].phone}</p>
-                <p class=""><span class="result-span-card">Postcode: </span>${searchResults[i].postcode}</p>
-                <p class=""><span class="result-span-card">Hobbies: </span>${searchResults[i].hobby.hobby_name}</p>
-              </div>
-            </div>
-            <div class="content">
-              <p class=""><span class="result-span-card">Fun Fact: </span>${searchResults[i].fun_fact}</p>
-            </div>
-          </div>
-         </div>
 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.io simple chat</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="inbox">
+        <div class="inbox__people">
+          <h4>Active users</h4>
+        </div>
+        <div class="inbox__messages">
+          <div class="messages_history"></div>
+          <div class="fallback"></div>
+        </div>
+      </div>
 
+      <ul id="messages"></ul>
+      <form id="form" action="" class="message_form">
+        <input id="input" autocomplete="off" /><button>Send</button>
+      </form>
+    </div>
 
+    
 
+    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script> --}}
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
 
-{{!-- 
- <ul id="messages"></ul>
-  <form id="form" action="">
-    <input id="input" autocomplete="off" /><button>Send</button>
-  </form>
+      var messages = document.getElementById("messages");
+      var form = document.getElementById("form");
+      var input = document.getElementById("input");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", input.value);
+          input.value = "";
+        }
+      });
+
+      socket.on("chat message", function (msg) {
+        var item = document.createElement("li");
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+    </script>
+    
+  </body>
+</html>
 
 <script src="/js/socketScript.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-</script> --}}
