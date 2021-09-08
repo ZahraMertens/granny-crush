@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const { User, Hobby,
-    // UserHobby , 
-    UserMatch } = require('../../models');
+const { User, Hobby, UserMatch } = require('../../models');
 const { Op } = require("sequelize");
 const withAuth = require('../../utils/auth');
 const { checkFileType, upload, storage } = require('../../utils/imageHelper')
@@ -14,7 +12,6 @@ router.get('/', async (req, res) => {
         const userData = await User.findAll({
             include: [{
                 model: Hobby,
-                // through: UserHobby, as: 'associated_hobbies' 
             }]
         })
         res.status(200).json(userData)
@@ -34,8 +31,6 @@ router.get('/:id', async (req, res) => {
                 include: [
                     {
                         model: Hobby,
-                        //   through: UserHobby, 
-                        //   as: 'associated_hobbies' 
                     }
                 ]
             })
@@ -157,20 +152,6 @@ router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
     }
 })
 
-
-// get all users matched 
-// router.get('/match/:id', async (req,res)=>{
-//     try{
-//         const userData = await User.findAll({
-//             include: [{ model: Hobby, through: UserHobby, as: 'associated_hobbies' }]
-//         })
-//         res.status(200).json(userData)
-//     }
-//     catch(e){
-//         console.log(e)
-//     }
-// })
-
 //PUT INTO USER ROUTES
 router.put('/:id', withAuth, async (req, res) => {
     const { name, age, gender, email, phone, postcode, fun_fact, hobby_name } = req.body
@@ -269,11 +250,6 @@ router.post('/signup', async (req, res) => {
                 hobby_id: hobbyId.id
             })
 
-        // const userHobbyData = UserHobby.create({
-        //     user_id: userData.id,
-        //     hobby_id: hobbyId[0].id
-        // })
-
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
@@ -345,6 +321,5 @@ router.post("/profile", async (req, res) => {
         }
     });
 });
-
 
 module.exports = router;

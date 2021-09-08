@@ -1,14 +1,15 @@
 const router = require('express').Router();
-const { Hobby, User, 
+const { Hobby, User,
   // UserHobby, 
   UserMatch } = require('../models');
+const { findByPk, findAll } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
-  
-    res.render('homepage', {
-      logged_in: req.session.logged_in
-    });
+
+  res.render('homepage', {
+    logged_in: req.session.logged_in
+  });
 });
 
 router.get('/login', (req, res) => {
@@ -23,12 +24,12 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
 
-    if (req.session.logged_in) {
-      res.redirect('/');
-      return;
-    }
-  
-    res.render('signup');
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 });
 
 
@@ -51,20 +52,20 @@ router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findOne({
       include: [
-            {   
-              model: Hobby, 
-            }
-        ],
-        where: {
+        {
+          model: Hobby,
+        }
+      ],
+      where: {
         id: req.session.user_id,
       }
     });
 
-    const user = userData.get({plain: true});
+    const user = userData.get({ plain: true });
     //console.log(user.associated_hobbies[0].hobby_name)
 
     const hobby = user.hobby.hobby_name;
-    
+
     res.render('profile', {
       user,
       hobby,
@@ -72,7 +73,7 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
   } catch (error) {
-    res.status(500).json({name: error.name, message: error.message})
+    res.status(500).json({ name: error.name, message: error.message })
   }
 
 })
@@ -88,7 +89,7 @@ router.get('/edit/profile', withAuth, async (req, res) => {
       }
     });
 
-    const user = userData.get({plain: true});
+    const user = userData.get({ plain: true });
     console.log(user)
 
     res.render('editProfile', {
@@ -97,11 +98,11 @@ router.get('/edit/profile', withAuth, async (req, res) => {
     });
 
   } catch (error) {
-    res.status(500).json({name: error.name, message: error.message})
+    res.status(500).json({ name: error.name, message: error.message })
   }
 
 })
-  
+
 
 router.get('/chat', withAuth, (req, res) => {
 
@@ -115,5 +116,28 @@ router.get('/chat', withAuth, (req, res) => {
   });
 });
 
+router.get('/matches/:id', withAuth, async (req, res) => {
+  try {
+    // Find user by PK (from req.params.id) and look for associated matches
+    const matchData = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          through: UserMatch,
+          as: 'match'
+        }
+      ]
+    })
+
+    // serialize data and only pull what is in the match array
+    // Note for front-end - please pass the match_id and the usermatch.id (primary key of the usermatch as data-attributes)
+    const matches = matchData.get({ plain: true }).match;
+    console.log(matches)
+    res.status(200).json(matches) // Change this to render when you have a HB file
+  }
+  catch (err) {
+    res.status(500).json(err)
+  }
+})
 
 module.exports = router;

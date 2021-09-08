@@ -21,8 +21,6 @@ const seedDatabase = async () => {
     returning: true,
   });
   console.log('\n----- USERS SEEDED -----\n');
-  // const userHobby = await UserHobby.bulkCreate(userHobbyData)
-  // console.log('\n----- USER HOBBIES SEEDED -----\n');
 
   const userMatch = await UserMatch.bulkCreate(userMatchData)
   console.log('\n----- USER MATCHES SEEDED -----\n');
