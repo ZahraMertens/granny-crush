@@ -142,12 +142,14 @@ router.get('/match', withAuth, async (req, res) => {
     const matchData = await User.findByPk(req.session.user_id, {
       include: [
         {
-          model: Hobby,
-        },
-        {
           model: User,
           through: UserMatch,
-          as: 'match'
+          as: 'match',
+          include: [
+            {
+              model: Hobby,
+            },
+          ]
         }
       ]
     })
