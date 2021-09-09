@@ -144,7 +144,12 @@ router.get('/match', withAuth, async (req, res) => {
         {
           model: User,
           through: UserMatch,
-          as: 'match'
+          as: 'match',
+          include: [
+            {
+              model: Hobby,
+            },
+          ]
         }
       ]
     })
