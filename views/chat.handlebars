@@ -1,13 +1,38 @@
+<div class="home-tab tabs is-large is-boxed is-centered">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/profile">My Profile</a></li>
+    <li><a href="/search">Search</a></li>
+    <li class="active-tab is-active"><a href="/chat">Chat</a></li>
+  </ul>
+</div>
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socket.io simple chat</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div class="container">
+<main class="search-main">
+   <div class="chat-room-div">
+		<form action="/chatRoom" method="GET">
+			<div class="form-control">
+				<label class="label is-large" for="username">Username:</label>
+        	<input class="input is-link" type="text" name="username" id="username" placeholder="{{user.name}}" value="{{username}}" required/>
+					<div class="form-control">
+						<label class="label is-large" for="room">Room</label>
+            <div class="control">
+              <div class="select">
+                <select name="room" id="room">
+							    <option value="General">General</option>
+                  <option value="Love">Love</option>
+						    </select>
+              </div>
+            </div>
+					</div>
+				<button type="submit" class="btn join-chat-button button is-danger">Join Chat</button>
+		</form>
+  </div>
+</main>
+
+
+  {{!-- <main>
+
+    <div class="chat-container">
       <div class="inbox">
         <div class="inbox__people">
           <h4>Active users</h4>
@@ -20,38 +45,12 @@
 
       <ul id="messages"></ul>
       <form id="form" action="" class="message_form">
-        <input id="input" autocomplete="off" /><button>Send</button>
+        <input class="input-message input is-primary" id="input" autocomplete="off"/><button class="button-message button is-primary">Send</button>
       </form>
     </div>
 
-    
+  </main> --}}
 
     {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script> --}}
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-
-      var messages = document.getElementById("messages");
-      var form = document.getElementById("form");
-      var input = document.getElementById("input");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (input.value) {
-          socket.emit("chat message", input.value);
-          input.value = "";
-        }
-      });
-
-      socket.on("chat message", function (msg) {
-        var item = document.createElement("li");
-        item.textContent = msg;
-        messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
-      });
-    </script>
-    
-  </body>
-</html>
-
-<script src="/js/socketScript.js"></script>
+{{!-- <script src="/socket.io/socket.io.js"></script>
+<script src="/js/socketScript.js"></script> --}}
