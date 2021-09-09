@@ -29,7 +29,6 @@ function roomUsers(room){
     return users.filter(user => user.room === room)
 }
 
-
 module.exports = {
     userJoin,
     getUser,
