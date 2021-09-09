@@ -1,10 +1,10 @@
-//const moment = require('moment')
+const moment = require('moment')
 
 function formatMsg (username, text) {
  return {
      username,
      text,
-     //time: moment().format("h:mm a") //30min in video
+     time: moment().format("h:mm a") //30min in video
  }
 }
 
