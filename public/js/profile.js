@@ -11,17 +11,17 @@ const deleteHandler = async (event) => {
         
         const res = await fetch(`/api/users/${user_id}`, {
             method: "DELETE",
-            });
+        });
         
-            console.log("success")
+        console.log("success")
         
-            if(res.ok){
-                console.log("Deleted Account")
-                alert("Your account has successfuly been deleted")
-                document.location.replace("/login")
-            } else {
-                alert(res.error)
-            } 
+        if(res.ok){
+            console.log("Deleted Account")
+            alert("Your account has successfuly been deleted")
+            document.location.replace("/login")
+        } else {
+            alert(res.error)
+        } 
         }
     } else {
         document.location.replace(`/profile`)

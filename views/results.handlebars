@@ -2,8 +2,9 @@
   <ul>
     <li><a href="/">Home</a></li>
     <li><a>My Profile</a></li>
-    <li class="is-active"><a href="/search">Results</a></li>
-    <li><a>Chat</a></li>
+    <li class="active-tab is-active"><a href="/search">Results</a></li>
+    <li><a href="/match">Match</a></li>
+    <li><a href="/chat">Chat</a></li>
   </ul>
 </div>
 
@@ -27,8 +28,8 @@
       <div class="media">
         <div class="media-content">
           <div class="heart-btn-container">
-            <button class="heart-button button is-danger py-1" data-id="{{user.id}}"> 
-              <i class="fas fa-heart fa-2x"></i>
+            <button type="submit" class="heart-button button is-danger py-1"> 
+              <i class="match-button fas fa-heart fa-2x" data-id="{{user.id}}"></i>
             </button>
            </div>
               <p class="title is-4">{{user.name}}, {{user.age}}</p>
@@ -47,4 +48,5 @@
   </div>
 </main>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/result.js"></script>

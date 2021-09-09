@@ -21,6 +21,21 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/currentUser', async (req, res) => {
+
+    try {
+        const userData = await User.findOne({
+           where: {
+               id: req.session.id,
+           }
+        })
+        res.status(200).json(userData)
+    }
+    catch (e) {
+        console.log(e)
+    }
+})
+
 //get all users by id
 router.get('/:id', async (req, res) => {
 
@@ -117,7 +132,8 @@ router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
         const userData = await User.findAll( 
             {
             include: [
-                { model: Hobby, 
+                { 
+                    model: Hobby, 
                 }
             ],
             where: {

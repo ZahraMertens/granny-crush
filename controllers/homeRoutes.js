@@ -103,24 +103,47 @@ router.get('/edit/profile', withAuth, async (req, res) => {
 
 })
 
+router.get('/chat', withAuth, async (req, res) => {
 
-router.get('/chat', withAuth, (req, res) => {
+  try {
+    const userData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      }
+    });
 
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
+    const user = userData.get({ plain: true });
+    console.log(user)
+
+     res.render('chat', {
+       user,
+       logged_in: req.session.logged_in
+     });
+
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({name: error.name})
   }
-
-  res.render('chat', {
-    logged_in: req.session.logged_in
-  });
+ 
 });
 
-router.get('/matches/:id', withAuth, async (req, res) => {
+router.get('/chatRoom', withAuth, async (req, res) => {
+
+     res.render('chatRoom', {
+       logged_in: req.session.logged_in
+     });
+});
+
+router.get('/match', withAuth, async (req, res) => {
   try {
+    console.log(req.session.user_id);
     // Find user by PK (from req.params.id) and look for associated matches
-    const matchData = await User.findByPk(req.params.id, {
+    const matchData = await User.findByPk(req.session.user_id, {
       include: [
+        {
+          model: Hobby,
+        },
         {
           model: User,
           through: UserMatch,
@@ -132,10 +155,17 @@ router.get('/matches/:id', withAuth, async (req, res) => {
     // serialize data and only pull what is in the match array
     // Note for front-end - please pass the match_id and the usermatch.id (primary key of the usermatch as data-attributes)
     const matches = matchData.get({ plain: true }).match;
+    //Can't ge hobby
     console.log(matches)
-    res.status(200).json(matches) // Change this to render when you have a HB file
+    
+    res.render('match', {
+      matches,
+      logged_in: req.session.logged_in,
+    })
+    // res.status(200).json(matches) // Change this to render when you have a HB file
   }
   catch (err) {
+    console.log(err)
     res.status(500).json(err)
   }
 })
