@@ -14,9 +14,9 @@ const createMatch = async (event) => {
             });
 
             if(res.ok){
-                document.location.replace(`/match`)
+                document.location.reload();
             } else {
-                document.location.replace(`/match`)
+                document.location.reload();
             }
         }
     }

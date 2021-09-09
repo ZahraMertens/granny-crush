@@ -127,8 +127,27 @@ router.get('/:id', async (req, res) => {
 
 router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
 
-    console.log(req.params)
+    console.log(req.params);
     try{
+
+        const matchData = await User.findByPk(req.session.user_id, {
+            include: [
+              {
+                model: User,
+                through: UserMatch,
+                as: 'match',
+                include: [
+                  {
+                    model: Hobby,
+                  },
+                ]
+              }
+            ]
+          });
+
+        const matches = matchData.get({ plain: true }).match;
+        const matchidArr = matches.map((match)=> match.id)
+
         const userData = await User.findAll( 
             {
             include: [
@@ -142,21 +161,32 @@ router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
                 },
                 gender: req.params.gender,
                 postcode: req.params.postcode,
+                id: {
+                    [Op.notIn]: matchidArr
+                  }
             }
-        })
-        // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
-        if (userData.length === 0){
-
+        }) 
+        const usersAll = userData.map((user) => {
+            return user.get({plain: true})
+        });
+            
+        console.log(usersAll)
+            
+        const currentUserId = req.session.user_id;
+        console.log(currentUserId)
+            
+        //Exlude the user who is logged into the account
+        const users = usersAll.filter((user) => {
+            return user.id !== currentUserId
+        });
+        
+        if (users.length === 0){
             res.render('noResults', {
                 logged_in: req.session.logged_in
             })
             return
         }
            
-        const users = userData.map((user) => {
-            return user.get({plain: true})
-        });
-
         res.render('results', {
             users,
             logged_in: req.session.logged_in

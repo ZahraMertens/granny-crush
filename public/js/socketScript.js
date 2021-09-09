@@ -85,6 +85,7 @@ function outputRoomName (room) {
 }
 
 function outputUsers(users) {
+  // userList.scrollTop = userList.scrollHeight;
   userList.innerHTML = `
     ${users.map( user => `<li>${user.username}</li>`).join('')}
   `
