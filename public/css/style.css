@@ -635,8 +635,12 @@ a {
 
 /* Chat Page */
 
-.chat-container {
-    width: 700px;
+.chat-container-room{
+    width: 800px;
+}
+
+.chat-container-room {
+    width: 800px;
 	max-width: 1100px;
 	background: linear-gradient(rgb(209, 189, 247), 40%, rgb(175, 228, 188));
 	margin: 30px auto;

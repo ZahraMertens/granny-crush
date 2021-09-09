@@ -3,6 +3,7 @@
     <li><a href="/">Home</a></li>
     <li><a href="/profile">My Profile</a></li>
     <li><a href="/search">Search</a></li>
+     <li><a href="/match">Match</a></li>
     <li class="active-tab is-active"><a href="/chat">Chat</a></li>
   </ul>
 </div>
@@ -12,7 +13,7 @@
 		<form action="/chatRoom" method="GET">
 			<div class="form-control">
 				<label class="label is-large" for="username">Username:</label>
-        	<input class="input is-link" type="text" name="username" id="username" placeholder="{{user.name}}" value="{{username}}" required/>
+        	<input class="input is-link" type="text" name="username" id="username" placeholder="{{user.name}}" value="{{user.name}}" required/>
 					<div class="form-control">
 						<label class="label is-large" for="room">Room</label>
             <div class="control">
