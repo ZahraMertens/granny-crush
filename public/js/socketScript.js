@@ -27,6 +27,7 @@ const chatForm = document.getElementById('chat-form');
 const chatMsgs = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users')
+const sidebar = document.querySelector('.chat-sidebar')
 
 //Get username and room from url
 const {username, room } = Qs.parse(location.search, {
@@ -42,6 +43,9 @@ socket.emit('joinRoom', {username, room});
 socket.on('roomUsers', ({room, users}) => {
   outputRoomName(room);
   outputUsers(users);
+
+  //If more users than height initialize scroll in css
+  sidebar.scrollBottom = sidebar.scrollHeight;
 })
 
 //Message from server 
@@ -73,7 +77,7 @@ function outputMsg(message){
   const div = document.createElement('div');
   div.classList.add('message');
   div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
-  <p class="text">
+  <p class="text-chat">
     ${message.text}
   </p>`;
   document.querySelector('.chat-messages').appendChild(div)
@@ -85,9 +89,8 @@ function outputRoomName (room) {
 }
 
 function outputUsers(users) {
-  // userList.scrollTop = userList.scrollHeight;
   userList.innerHTML = `
-    ${users.map( user => `<li>${user.username}</li>`).join('')}
+    ${users.map( user => `<li class="li-users-room">${user.username}</li>`).join('')}
   `
 }
 
