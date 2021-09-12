@@ -8,7 +8,6 @@ const { checkFileType, upload, storage } = require('../../utils/imageHelper')
 router.get('/', async (req, res) => {
 
     try {
-
         const userData = await User.findAll({
             include: [{
                 model: Hobby,
@@ -21,6 +20,7 @@ router.get('/', async (req, res) => {
     }
 })
 
+//Get current user by id INSOMINA
 router.get('/currentUser', async (req, res) => {
 
     try {
@@ -40,7 +40,6 @@ router.get('/currentUser', async (req, res) => {
 router.get('/:id', async (req, res) => {
 
     try {
-
         const userData = await User.findByPk(req.params.id,
             {
                 include: [
@@ -56,78 +55,9 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// SEARCH for matches from search bar
-
-// !!! EXCLUDE LOGGED IN USER FROM SEARCH
-// router.post('/results', async (req, res) => {
-
-//     try {
-//         const userData = await User.findAll(
-//             {
-//                 include: [
-//                     {
-//                         model: Hobby,
-//                         //   through: UserHobby, 
-//                         //   as: 'associated_hobbies' 
-//                     }
-//                 ],
-//                 where: {
-//                     age: {
-//                         [Op.between]: [req.body.minAge, req.body.maxAge]
-//                     },
-//                     gender: req.body.gender,
-//                     postcode: req.body.postcode,
-//                 }
-//             })
-
-//         // if it returns an empty array, return 404. !userData wasn't working because it was technically an empty array if empty.
-//         if (userData.length === 0) {
-//             res.status(404).json("No users found")
-//             return
-//         }
-
-//         const usersAll = userData.map((user) => {
-//             return user.get({ plain: true })
-//         });
-
-//         console.log(usersAll)
-
-//         const currentUserId = req.session.user_id;
-//         console.log(currentUserId)
-
-//         //Exlude the user who is logged into the account
-//         const users = usersAll.filter((user) => {
-//             return user.id !== currentUserId
-//         });
-
-//         console.log(users)
-//         // console.log(users) //returns object of user 
-//         //PG edit - returns the users array/object as a response for us to use in the fetch / front end. No need to store in DB. 
-//         // res.status(200).json(users);
-//         // res.render('results', {
-//         //     // users,
-//         //     // logged_in: req.session.logged_in,
-//         //     // user_id: req.session.user_id,
-//         // })
-
-//         // const currentUser = req.session.user_id
-//         // console.log(currentUser) //Returns current user id "4"
-
-//         // const usersId = users.map(({id}) => id);
-//         // console.log(usersId) //Returns an array of the users matches ids [ 1, 2 ]
-
-//         //Create match between user with id 4 and the results
-//         // UserMatch.bulkCreate(newUserMatch)
-
-//     }
-//     catch (error) {
-//         res.status(500).json({ name: error.name, message: error.message })
-//     }
-// })
 
 router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
 
-    console.log(req.params);
     try{
 
         const matchData = await User.findByPk(req.session.user_id, {
@@ -170,10 +100,10 @@ router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
             return user.get({plain: true})
         });
             
-        console.log(usersAll)
+        // console.log(usersAll)
             
         const currentUserId = req.session.user_id;
-        console.log(currentUserId)
+        // console.log(currentUserId)
             
         //Exlude the user who is logged into the account
         const users = usersAll.filter((user) => {
@@ -200,7 +130,7 @@ router.get('/search/:minAge/:maxAge/:gender/:postcode', async (req,res) => {
 
 //PUT INTO USER ROUTES
 router.put('/:id', withAuth, async (req, res) => {
-    const { name, age, gender, email, phone, postcode, fun_fact, hobby_name } = req.body
+    const { name, age, gender, email, phone, postcode, fun_fact, hobby_name } = req.body;
 
     try {
         const hobbyData = await Hobby.findOne({
@@ -208,7 +138,7 @@ router.put('/:id', withAuth, async (req, res) => {
                 hobby_name: hobby_name
             }
         })
-        console.log(hobbyData)
+        // console.log(hobbyData)
         const hobbyId = hobbyData.get({ plain: true });
 
         const userData = await User.update({
@@ -238,6 +168,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 })
 
+//When user is logging in, user.id gets saved in session
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -274,7 +205,7 @@ router.post('/login', async (req, res) => {
 router.post('/signup', async (req, res) => {
     try {
         const { name, password, age, gender, email, phone, postcode, fun_fact, hobby_name } = req.body
-        //find hobby id
+
         const hobbyData = await Hobby.findOne({
             where: {
                 hobby_name: req.body.hobby_name

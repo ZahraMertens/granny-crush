@@ -19,9 +19,9 @@ const loginHandler = async (event) => {
     }
 }
 
+//Open modal if user data is wrong or does not exist
 function handleClose (event) {
     event.preventDefault();
-    console.log("close")
     $('.modal').removeClass('is-active')
 };
 

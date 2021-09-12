@@ -3,18 +3,13 @@ const { User, Hobby, UserMatch } = require('../../models');
 const { Op } = require("sequelize");
 const withAuth = require('../../utils/auth');
 
-// SAVE NEW MATCH 
-//api/matches/id
-// Id in req.body
 router.post("/", async (req, res) => {
-    // PASS match's user_id from frontend in params, user id from req.session_user_id
+    
     try {
         const userMatchData = await UserMatch.create({
             userId: req.session.user_id,
             matchId: req.body.match_id
         });
-
-        console.log(userMatchData)
 
         res.status(200).json({ userMatch: userMatchData, message: 'Match created!' })
 
