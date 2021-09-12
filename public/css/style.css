@@ -571,6 +571,7 @@
 
 .editProfile-delete-p {
     text-align: end!important;
+    cursor: pointer;
 }
 
 .editProfile-card-button{
@@ -862,6 +863,15 @@ a {
     }
 }
 
+<<<<<<< HEAD
+=======
+@media (max-width: 550px) {
+	.signup-form {
+        width: 95%!important;
+    }
+}
+
+>>>>>>> main
 /* ======= Login PAGE ======= */
 
 @media (max-width: 1500px) {
@@ -935,6 +945,20 @@ a {
     }
 }
 
+<<<<<<< HEAD
+=======
+@media (max-width: 500px) {
+    .login-form{
+        width:95%!important;
+    }
+
+    .caption {
+        font-size: 20px;
+    }
+}
+
+
+>>>>>>> main
 /* ======= HOME PAGE ======= */
  
 
@@ -1092,6 +1116,21 @@ a {
     }
 }
 
+<<<<<<< HEAD
+=======
+@media (max-width: 450px) {
+
+    .results-card-container {
+        width: 90%!important;
+    }
+
+    .card-profile {
+        width: 90%;
+    }
+}
+
+
+>>>>>>> main
 /* ===== MATCH ======== */
 @media (max-width: 1338px) {
 
@@ -1164,6 +1203,17 @@ a {
     }
 }
 
+<<<<<<< HEAD
+=======
+@media (max-width: 700px) {
+
+    .roomchat-main {
+        display: grid;
+        grid-template-columns: 1fr 0fr;
+    }
+}
+
+>>>>>>> main
 /* ====Join Chat ====== */
 @media (max-width: 1330px) {
 
