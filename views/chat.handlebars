@@ -10,6 +10,11 @@
 
 <main class="joinchat-main">
 
+   <div class="chatForm-header">
+      <h1 class="subtitle is-1">Join A Chat Room.</h1>
+      <p class="subtitle is-4">Stay connected with the community &#38 chat with potential partners and friends.</p>
+    </div>
+
    <div class="joinchat-room-div">
 		<form action="/chatRoom" method="GET">
 			<div class="form-control">
@@ -18,7 +23,7 @@
 					<div class="form-control">
 						<label class="label is-large" for="room">Room</label>
             <div class="control">
-              <div class="select">
+              <div class="select is-link">
                 <select name="room" id="room">
 							    <option value="General">General</option>
                   <option value="Love">Love</option>
@@ -26,7 +31,7 @@
               </div>
             </div>
 					</div>
-				<button type="submit" class="btn join-chat-button button is-danger">Join Chat</button>
+				<button type="submit" class="btn join-chat-button button is-link">Join Chat</button>
 		</form>
   </div>
   
