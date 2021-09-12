@@ -863,6 +863,12 @@ a {
     }
 }
 
+@media (max-width: 550px) {
+	.signup-form {
+        width: 95%!important;
+    }
+}
+
 /* ======= Login PAGE ======= */
 
 @media (max-width: 1500px) {
@@ -935,6 +941,17 @@ a {
         background-size: cover;
     }
 }
+
+@media (max-width: 500px) {
+    .login-form{
+        width:95%!important;
+    }
+
+    .caption {
+        font-size: 20px;
+    }
+}
+
 
 /* ======= HOME PAGE ======= */
  
@@ -1093,6 +1110,18 @@ a {
     }
 }
 
+@media (max-width: 450px) {
+
+    .results-card-container {
+        width: 90%!important;
+    }
+
+    .card-profile {
+        width: 90%;
+    }
+}
+
+
 /* ===== MATCH ======== */
 @media (max-width: 1338px) {
 
@@ -1162,6 +1191,14 @@ a {
 
     .room-main {
         background-image: url(../images/background46.png);
+    }
+}
+
+@media (max-width: 700px) {
+
+    .roomchat-main {
+        display: grid;
+        grid-template-columns: 1fr 0fr;
     }
 }
 
