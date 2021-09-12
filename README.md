@@ -10,6 +10,12 @@ Granny crush was an idea compiled in the difficulty seniors have in finding a pa
 According to ABS (Australian Bureau of Statistic), the median age at marriage has increased over time, and so too has the age at separation and divorce. The median age at divorce is now: 45 years old (males) and 43 years for females.
 Along with divorce usually come children and lifelong responsibilities, so the rate of single seniors is high, and that old story of the busy day-to-day one doesn't notice loneliness but after retirement you can feel the empty of not having someone to warm your feet when you go to sleep.
 
+
+## Mock up
+
+
+
+
 ## Content
 
 - [User Story](#user-story)

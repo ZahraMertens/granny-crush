@@ -1,0 +1,65 @@
+<div class="home-tab tabs is-large is-boxed is-centered">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/profile">My Profile</a></li>
+    <li><a href="/search">Search</a></li>
+    <li class="active-tab is-active"><a href="/match">Match</a></li>
+    <li><a href="/chat">Chat</a></li>
+  </ul>
+</div>
+
+<main class="columns match-main">
+
+  {{#if matches.length}}
+  <div class="column match-img-container">
+   <img class="match-img" src="/images/match.png" alt="Placeholder image">
+  </div>
+  {{/if}}
+  
+  {{#if matches.length}}
+  <div class='results-card-container column is-two-thirds'>
+  {{#each matches as |match|}}
+  <div class="card-profile card">
+    <div class="card-image">
+      <figure class="image-container image is-4by3">
+        <img class="profile-img" src="/images/{{match.filename}}" alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content result-card-content">
+      <div class="media">
+        <div class="media-content">
+          <div class="heart-btn-container">
+               <button type="submit" class="heart-button remove-match-btn button is-link py-1" data-id="{{match.id}}">REMOVE</button>
+           </div>
+              <p class="title is-4">{{match.name}}, {{match.age}}</p>
+              <p class="result-span-card">{{match.gender}}</p>
+              <br>
+              <p class=""><span class="result-span-card">Postcode: </span>{{match.postcode}}</p>
+              <p class=""><span class="result-span-card">Hobbies: </span>{{match.hobby.hobby_name}}</p>
+              <p class=""><span class="result-span-card">Phone: </span>{{match.phone}}</p>
+              <p class=""><span class="result-span-card">E-mail: </span>{{match.email}}</p>
+         </div>
+       </div>
+        <div class="content">
+          <p class=""><span class="result-span-card">Fun Fact: </span>{{match.fun_fact}}</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  </div>
+  {{else}}
+  <div class="nomatch-card card">
+  <div class="card-content">
+     <div class="content title is-3">
+         Sorry, it looks like you haven't got a match at the moment...
+          <img class="nomatch-image" src="/images/modalImage.jpg" alt="Placeholder image">
+         <a href="/search"><p class="nomatch-p subtitle is-5">Click here to search for a match...</p></a>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+  
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/removeMatch.js"></script>

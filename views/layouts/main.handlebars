@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/css/style.css"/>
-  
   <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
- 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="shortcut icon" type="image/ico" href="/images/icon.png">
   <title>Granny Crush</title>
 </head>
 
@@ -25,19 +25,11 @@
               </div>
             </div>
           
-            <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
-                  <a class="navbar-about-us navbar-item">
-                     About Us
-                  </a>
-              </div>
-            </div>
-          
               {{#if logged_in}}
                <div class="navbar-end">
                 <div class="navbar-item">
                   <div class="sign-up-btn buttons">
-                    <a id="btn-logout" class="button is-danger">
+                    <a id="btn-logout" class="button button-navbar is-danger">
                       <strong>Logout</strong>
                     </a>
                   </div>
@@ -47,10 +39,10 @@
               <div class="navbar-end">
                 <div class="navbar-item">
                   <div class="sign-up-btn buttons">
-                    <a href="/signup" class="button is-danger">
+                    <a href="/signup" class="button button-navbar is-link">
                       <strong>Sign up</strong>
                     </a>
-                    <a href="/login" class="button is-danger">
+                    <a href="/login" class="button button-navbar is-danger">
                       <strong>Login</strong>
                     </a>
                   </div>
@@ -66,9 +58,20 @@
     <footer class="footer">
         <div class="content has-text-centered">
           <p>
-            <strong>Granny Crush</strong> by <a href="https://jgthms.com">University of Syndey Students</a>. The source code is licensed
+            <strong>Granny Crush</strong> by 
+            <a href="https://github.com/rpgarde">Paolo Garde,</a> 
+            <a href="https://github.com/EllaFerreira">Rafaela Ferreira and </a>
+            <a href="https://github.com/ZahraMertens">Zahra Mertens</a>
+            The source code is licensed
             <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
             is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+          </p>
+          <p>
+            <i class="fab fa-facebook fa-2x"> </i>
+            <i class="fab fa-instagram fa-2x"> </i>
+            <i class="fab fa-twitter-square fa-2x"> </i>
+            <a href="https://github.com/ZahraMertens/granny-crush.git"><i class="fab fa-github fa-2x"></i></a>
+
           </p>
         </div>
       </footer>

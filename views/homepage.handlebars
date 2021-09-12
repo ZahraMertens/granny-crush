@@ -3,45 +3,72 @@
     <li class="active-tab is-active"><a>Home</a></li>
     <li><a href="/profile">My Profile</a></li>
     <li><a href="/search">Search</a></li>
+    <li><a href="/match">Match</a></li>
     <li><a href="/chat">Chat</a></li>
   </ul>
 </div>
 
 <main class="homepage-main">
 
-  <div class="home-tile-container">
-    <div class="home-main-card card">
-      <div class="card-content">
-        <div class="home-main-content content">
-          What would you like to do?
-        </div>
-      </div>
-    </div>
+  <div class="homepage-content">
 
-
-    <div class="home-card-container card">
-        <div class="tile is-ancestor">
-          <div class="tile is-4 is-vertical is-parent">
-            <div class="home-tile-one tile is-child box">
-              <p class="title">View My Profile</p>
-              <p>You can view your profile and update your personal details.</p>
-            </div>
-            <div class="home-tile-two tile is-child box">
-              <p class="title">View all your Chats</p>
-              <p>See all the chat messages you exchanged with a match!</p>
+    <div class="home-tile-container">
+        <div class="home-main-card card">
+          <div class="card-content home-header-card">
+            <div class="home-main-content content subtitle is-1">
+              What would you like to do?
             </div>
           </div>
-          <div class="tile is-parent">
-            <div class="home-tile-three tile is-child box">
-              <p class="title">Search for your true love ❤️</p>
-              <p>You can filter your preferences in our search engine to find a suitable partner</p>
-              <a href="/search">
-                <button id="home-search-btn" type="button" class="login-btn button is-danger">Search Now</button>
+        </div>
+    </div>
+    
+      <div class='columns home-card-container'>
+          <div class="column card-home">
+            <div class="icon-div">
+              <img class="iconHome" src="/images/iconView.png" alt="Placeholder image">
+            </div>
+              <p class="subtitle is-3">View My Profile</p>
+              <p class="subtitle is-5">You can view your profile and update your personal details.</p>
+              <a href="/profile">
+                <button id="home-search-btn" type="button" class="home-btn button is-link is-rounded">Profile</button>
               </a>
-            </div>
           </div>
-        </div>
-    </div>
+          <div class="column card-home">
+            <div class="icon-div">
+              <img class="iconHome" src="/images/iconSearch.png" alt="Placeholder image">
+            </div>
+            <p class="subtitle is-3">Search For The Perfect Partner</p>
+              <p class="subtitle is-5">You can search for your perfect partner based on their age, gender and postcode.</p>
+              <a href="/search">
+                <button id="home-search-btn" type="button" class="home-btn button is-link is-rounded">Search Now</button>
+              </a>
+          </div>
+          <div class="column card-home">
+            <div class="icon-div">
+              <img class="iconHome" src="/images/iconMatch.png" alt="Placeholder image">
+            </div>
+              <p class="subtitle is-3">View All My Matches</p>
+              <p class="subtitle is-5">View all your matches, update your match list and learn more about people in your match list.</p>
+              <a href="/match">
+                <button id="home-search-btn" type="button" class="home-btn button is-link is-rounded">Matches</button>
+              </a>
+          </div>
+          
+          <div class="column card-home">
+            <div class="icon-div">
+              <img class="iconHome" src="/images/iconChat.png" alt="Placeholder image">
+            </div>
+            <p class="subtitle is-3">Chat With Others</p>
+              <p class="subtitle is-5">Join a Chat Room to communicate with others in a real time chat.</p>
+              <a href="/chat">
+                <button id="home-search-btn" type="button" class="home-btn button is-link is-rounded">Chat Now</button>
+              </a>
+          </div>
+      </div>
+
   </div>
 
 </main>
+
+
+<script src="/js/chat.js"></script>
