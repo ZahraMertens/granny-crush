@@ -43,6 +43,9 @@ User.init(
     phone: {
         type:DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isNumeric: true,
+        },
     },
     postcode: {
         type:DataTypes.INTEGER,

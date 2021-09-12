@@ -1,57 +1,38 @@
+<div class="home-tab tabs is-large is-boxed is-centered">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/profile">My Profile</a></li>
+    <li><a href="/search">Search</a></li>
+     <li><a href="/match">Match</a></li>
+    <li class="active-tab is-active"><a href="/chat">Chat</a></li>
+  </ul>
+</div>
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socket.io simple chat</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="inbox">
-        <div class="inbox__people">
-          <h4>Active users</h4>
-        </div>
-        <div class="inbox__messages">
-          <div class="messages_history"></div>
-          <div class="fallback"></div>
-        </div>
-      </div>
+<main class="joinchat-main">
 
-      <ul id="messages"></ul>
-      <form id="form" action="" class="message_form">
-        <input id="input" autocomplete="off" /><button>Send</button>
-      </form>
+   <div class="chatForm-header">
+      <h1 class="subtitle is-1">Join A Chat Room.</h1>
+      <p class="subtitle is-4">Stay connected with the community &#38 chat with potential partners and friends.</p>
     </div>
 
-    
-
-    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script> --}}
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-
-      var messages = document.getElementById("messages");
-      var form = document.getElementById("form");
-      var input = document.getElementById("input");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (input.value) {
-          socket.emit("chat message", input.value);
-          input.value = "";
-        }
-      });
-
-      socket.on("chat message", function (msg) {
-        var item = document.createElement("li");
-        item.textContent = msg;
-        messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
-      });
-    </script>
-    
-  </body>
-</html>
-
-<script src="/js/socketScript.js"></script>
+   <div class="joinchat-room-div">
+		<form action="/chatRoom" method="GET">
+			<div class="form-control">
+				<label class="label is-large" for="username">Username:</label>
+        	<input class="input is-link" type="text" name="username" id="username" placeholder="{{user.name}}" value="{{user.name}}" required/>
+					<div class="form-control">
+						<label class="label is-large" for="room">Room</label>
+            <div class="control">
+              <div class="select is-link">
+                <select name="room" id="room">
+							    <option value="General">General</option>
+                  <option value="Love">Love</option>
+						    </select>
+              </div>
+            </div>
+					</div>
+				<button type="submit" class="btn join-chat-button button is-link">Join Chat</button>
+		</form>
+  </div>
+  
+</main>

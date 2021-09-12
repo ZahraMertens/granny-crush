@@ -7,13 +7,10 @@ const deleteHandler = async (event) => {
         if(event.target.hasAttribute('data-id')){
 
         const user_id = event.target.getAttribute('data-id');
-        console.log(user_id)
         
         const res = await fetch(`/api/users/${user_id}`, {
             method: "DELETE",
-            });
-        
-            console.log("success")
+        });
         
             if(res.ok){
                 console.log("Deleted Account")
@@ -23,6 +20,7 @@ const deleteHandler = async (event) => {
                 alert(res.error)
             } 
         }
+
     } else {
         document.location.replace(`/profile`)
     }
@@ -34,24 +32,16 @@ const updateHandler = async (event) => {
 
     if(event.target.hasAttribute('data-id')){
 
+        //Getting all values from input fields
         const user_id = event.target.getAttribute('data-id');
-        console.log(user_id)
         const name = document.querySelector("#edit-name").value.trim();
-        console.log(name)
         const age = document.querySelector("#edit-age").value.trim();
-        console.log(age)
         const gender = document.querySelector("#edit-gender").value.trim();
-        console.log(gender)
         const email = document.querySelector("#edit-email").value.trim();
-        console.log(email)
         const phone = document.querySelector("#edit-phone").value.trim();
-        console.log(phone)
         const postcode = document.querySelector("#edit-postcode").value.trim();
-        console.log(postcode)
         const fun_fact = document.querySelector("#edit-fact").value.trim();
-        console.log(fun_fact)
         const hobby_name = document.querySelector("input[type='radio'][name='answer']:checked").value;
-        console.log(hobby_name)
         
         if (name && age && gender && email && phone && postcode && fun_fact && hobby_name){
             const res = await fetch(`/api/users/${user_id}`, {
@@ -69,10 +59,7 @@ const updateHandler = async (event) => {
     }
 }
 
-document.getElementById('deleteTag').addEventListener("click", deleteHandler);
-document.getElementById("editProfile-btn-save").addEventListener("click", updateHandler);
-
-//Gets file name from files
+//Gets file name from files and display in input field
 const fileInput = document.querySelector('#file-js-example input[type=file]');
 fileInput.onchange = () => {
     if (fileInput.files.length > 0) {
@@ -81,3 +68,7 @@ fileInput.onchange = () => {
         return fileInput.files[0].name
     }
 }
+
+document.getElementById('deleteTag').addEventListener("click", deleteHandler);
+document.getElementById("editProfile-btn-save").addEventListener("click", updateHandler);
+

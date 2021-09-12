@@ -8,7 +8,7 @@
               <div class="field">
                 <label class="label is-normal">Username:</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input id="signup-username" class="input is-success" type="text" placeholder="Your preferred name" value="">
+                  <input id="signup-username" class="input is-link" type="text" placeholder="Your preferred name" value="">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -21,7 +21,7 @@
               <div class="field">
                 <label class="label is-normal">Email:</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input id="signup-email" class="input is-success" type="email" placeholder="yourName@gmail.com" value="">
+                  <input id="signup-email" class="input is-link" type="email" placeholder="yourName@gmail.com" value="">
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>
@@ -34,7 +34,7 @@
               <div class="field">
                 <label class="label is-normal">Gender</label>
                 <div class="control">
-                  <div class="select">
+                  <div class="select is-link">
                     <select id="signup-gender">
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
@@ -47,20 +47,20 @@
               <div class="field">
                 <label class="label">Phone:</label>
                  <div class="control has-icons-left has-icons-right">
-                  <input id="signup-phone" class="input is-success" type="text" placeholder="Text input" value="2000">
+                  <input id="signup-phone" class="input is-link" type="text" placeholder="Text input" value="0423123456">
                  </div>
               </div>
               <div class="field">
                 <label class="label is-normal">Postcode:</label>
                  <div class="control has-icons-left has-icons-right">
-                  <input id="signup-postcode" class="input is-success" type="text" placeholder="Text input" value="2000">
+                  <input id="signup-postcode" class="input is-link" type="text" placeholder="Text input" value="2000">
                  </div>
               </div>
               <br>
               <div class="field">
                  <label class="label is-normal">Age:</label>
                    <div class="control">
-                     <div class="select">
+                     <div class="select is-link">
                        <select id="signup-age">
                        {{!-- Loop from JS file to loop over age --}}
                        </select>
@@ -71,7 +71,7 @@
               <div>
                 <label class="label is-normal">Fun Fact:</label>
                   <div class="control has-icons-left has-icons-right">
-                    <textarea id="signup-fact" class="input is-success" type="text" placeholder="I am a crazy cat lady" value="2000" rows="1"></textarea>
+                    <textarea id="signup-fact" class="input is-link" type="text" placeholder="I am a crazy cat lady" value="2000" rows="1"></textarea>
                   </div>
               </div>
               <br>
@@ -79,7 +79,7 @@
                 <label class="label is-normal">Hobby:</label>
                   <div id="signup-hobby">
                     <label class="radio">
-                      <input type="radio" name="answer" value="Knitting">
+                      <input type="radio" name="answer" value="Knitting" checked>
                         Knitting
                     </label>
                     <label class="radio">
@@ -116,33 +116,17 @@
               <div class="field">
                 <label class="label is-normal">Password:</label>
                  <p class="control has-icons-left">
-                   <input id="signup-password" class="input" type="password" placeholder="Password">
+                   <input id="signup-password" class="input is-link" type="password" placeholder="">
                      <span class="icon is-small is-left">
                       <i class="fas fa-lock"></i>
                     </span>
                 </p>
               </div>
               <br>
-
-              {{!-- <label class="label is-normal">Upload a Picture:</label>
-              <div class="file">
-                <label class="file-label">
-                  <input class="file-input" type="file" name="resume">
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="file-label">
-                      Choose a file…
-                    </span>
-                  </span>
-                </label>
-              </div>
-                <br> --}}
               <div class="field">
                 <div class="control">
                   <label class="checkbox">
-                    <input type="checkbox">
+                    <input type="checkbox" required>
                     I agree to the <a href="https://termly.io/products/terms-and-conditions-generator/">terms and conditions</a>
                   </label>
                 </div>

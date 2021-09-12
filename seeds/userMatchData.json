@@ -2,17 +2,5 @@
     {
         "userId": 1,
         "matchId": 3
-    },
-    {
-        "userId": 1,
-        "matchId": 2
-    },
-    {
-        "userId": 3,
-        "matchId": 2
-    },
-    {
-        "userId": 2,
-        "matchId": 1
     }
 ]

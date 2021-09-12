@@ -1,51 +1,54 @@
-<main class="columns login-main">
+<main class="login-main">
 
-    <form class="login-form form column is-one-third">
-        <div>
+  <div class="columns">
+
+    <div class="column">
+      <form class="login-form form">
+          <div>
             <h3 class="title-login title is-2">Login</h3>
-            </div>
-            <br>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                <input id="login-email" class="input" type="email" placeholder="Email">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left">
-                <input id="login-password" class="input" type="password" placeholder="Password">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                <button id="login-btn" type="button" class="login-btn button is-danger">
-                    Login
-                </button>
-                </p>
-            </div>
-            <a class="login-p-el" href="/signup">
-               <p id="login-signup-p">Haven't got an account yet? Sign up here...</p>
-            </a>
-        </form>
-
-        
-          <div class="column slider">
-            <div class="caption">
-              Ready to find 
-              <div class="text-box">
-                <div>love!</div>
-                <div>life!</div>
-              </div>
-            </div>
           </div>
+          <br>
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input id="login-email" class="input is-link" type="email" placeholder="Email" required>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+              <p class="control has-icons-left">
+                  <input id="login-password" class="input is-link" type="password" placeholder="Password" required>
+                  <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                  </span>
+              </p>
+          </div>
+          <div class="field">
+              <p class="control">
+                  <button id="login-btn" type="button" class="login-btn button is-danger">
+                      Login
+                  </button>
+              </p>
+          </div>
+            <a class="login-p-el" href="/signup">
+              <p id="login-signup-p">Haven't got an account yet? Sign up here...</p>
+            </a>
+      </form>
+    </div>
+    <div class="column column-slider">
+      <div class="slider">
+        <div class="caption">
+          It's never too late to find 
+            <div class="text-box">
+              <div>love!</div>
+              <div>life!</div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  <div>
 
         <div class="modal">
           <div class="modal-background"></div>

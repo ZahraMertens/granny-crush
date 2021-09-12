@@ -1,5 +1,6 @@
 const logoutBtn = document.querySelector("#btn-logout");
 
+//Destry session in backend
 const handleLogout = async () => {
     const res = await fetch('/api/users/logout', {
       method: 'POST',
