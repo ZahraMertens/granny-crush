@@ -1,10 +1,12 @@
 # Group Project 2 - App Dating - Granny-Crush 👵🏻 ❤️‍🔥 👴🏼
 
 ![license](https://img.shields.io/github/license/ZahraMertens/granny-crush)
-![Contributor](https://img.shields.io/badge/Contributor-3-green.svg) 
-![Sql](https://img.shields.io/badge/Npm-MySql-red.svg) 
-![sequelize](https://img.shields.io/badge/Npm-sequelize-red.svg) 
-![express](https://img.shields.io/badge/Npm-expressJs-red.svg)
+![Contributor](https://img.shields.io/badge/Contributors-3-green.svg) 
+![Sql](https://img.shields.io/badge/npm-MySql-red.svg) 
+![sequelize](https://img.shields.io/badge/npm-sequelize-red.svg) 
+![express](https://img.shields.io/badge/npm-expressJs-red.svg)
+![multer](https://img.shields.io/badge/npm-multer-red)
+![socket.io](https://img.shields.io/badge/npm-socket.io-red)
 
 Granny crush was an idea compiled in the difficulty seniors have in finding a partner for life.
 According to ABS (Australian Bureau of Statistic), the median age at marriage has increased over time, and so too has the age at separation and divorce. The median age at divorce is now: 45 years old (males) and 43 years for females.
@@ -12,12 +14,11 @@ Along with divorce usually come children and lifelong responsibilities, so the r
 
 ## Mock up
 
-https://media.giphy.com/media/35HT59aeKWuvJiueyG/giphy.gif?cid=790b7611be61ad3a39e19cd25578feed93883ddc4d25f3ec&rid=giphy.gif&ct=g
+![mockup](https://media.giphy.com/media/35HT59aeKWuvJiueyG/giphy.gif?cid=790b7611be61ad3a39e19cd25578feed93883ddc4d25f3ec&rid=giphy.gif&ct=g)
 
 ## Deployed Link
 
 [Click here](https://obscure-dusk-34538.herokuapp.com/login)
-
 
 ## Content
 
@@ -30,13 +31,16 @@ https://media.giphy.com/media/35HT59aeKWuvJiueyG/giphy.gif?cid=790b7611be61ad3a3
 
 ## User Story
 
+```md
 As a single senior looking for love
 I want to find people like me 
 So that I can find someone to spend the rest of my life with.
+```
 
 ## Acceptance Criteria
 
-- GIVEN a dating site for seniors
+```md
+GIVEN a dating site for seniors
 - WHEN I visit the site for the first time
 - THEN I am presented the option to either signup or login
 - WHEN I choose to signup
@@ -85,7 +89,7 @@ So that I can find someone to spend the rest of my life with.
 - THEN I am logged out of the site and sent back to the login form 
 - WHEN I am logged in and idle on the site for more than a set time 
 - THEN I am logged out automatically
-
+```
 
 ## Technologies
 
@@ -112,7 +116,7 @@ So that I can find someone to spend the rest of my life with.
 
 ## Installation
 
-- If you want to run this locally on your machine:
+If you want to run this locally on your machine:
 - Clone to your local machine from this repo
 - Start by creating the databases by running SOURCE schema.sql;
 - Change the .env.example to a .env file with your MySQL credentials
