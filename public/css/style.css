@@ -571,6 +571,7 @@
 
 .editProfile-delete-p {
     text-align: end!important;
+    cursor: pointer;
 }
 
 .editProfile-card-button{
