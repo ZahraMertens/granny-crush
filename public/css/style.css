@@ -863,15 +863,12 @@ a {
     }
 }
 
-<<<<<<< HEAD
-=======
 @media (max-width: 550px) {
 	.signup-form {
         width: 95%!important;
     }
 }
 
->>>>>>> main
 /* ======= Login PAGE ======= */
 
 @media (max-width: 1500px) {
@@ -945,8 +942,6 @@ a {
     }
 }
 
-<<<<<<< HEAD
-=======
 @media (max-width: 500px) {
     .login-form{
         width:95%!important;
@@ -958,7 +953,6 @@ a {
 }
 
 
->>>>>>> main
 /* ======= HOME PAGE ======= */
  
 
@@ -1116,8 +1110,6 @@ a {
     }
 }
 
-<<<<<<< HEAD
-=======
 @media (max-width: 450px) {
 
     .results-card-container {
@@ -1130,7 +1122,6 @@ a {
 }
 
 
->>>>>>> main
 /* ===== MATCH ======== */
 @media (max-width: 1338px) {
 
@@ -1203,8 +1194,6 @@ a {
     }
 }
 
-<<<<<<< HEAD
-=======
 @media (max-width: 700px) {
 
     .roomchat-main {
@@ -1213,7 +1202,6 @@ a {
     }
 }
 
->>>>>>> main
 /* ====Join Chat ====== */
 @media (max-width: 1330px) {
 
