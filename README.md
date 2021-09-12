@@ -14,8 +14,6 @@ Along with divorce usually come children and lifelong responsibilities, so the r
 ## Mock up
 
 
-
-
 ## Content
 
 - [User Story](#user-story)
