@@ -12,13 +12,12 @@ Along with divorce usually come children and lifelong responsibilities, so the r
 
 ## Content
 
-- [User Story](#UserStory)
-- [Acceptance Criteria](#AcceptanceCriteria)
-- [Why Granny-Crush?](#WhyGranny-Crush?)
-- [Technologies](#Technologies)
-- [Documentation](#Documentation)
-- [Installation](#Installation)
-- [Project Creators](#ProjectCreators)
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Technologies](#technologies)
+- [Documentation](#documentation)
+- [Installation](#installation)
+- [Project Creators](#project-creators)
 
 ## User Story
 
