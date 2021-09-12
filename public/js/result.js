@@ -4,7 +4,6 @@ const createMatch = async (event) => {
     if(event.target.hasAttribute('data-id')){
 
     const match_id = event.target.getAttribute('data-id');
-    console.log(match_id)
         
         if (match_id){
             const res = await fetch(`/api/matches/`, {
@@ -23,4 +22,3 @@ const createMatch = async (event) => {
 }
 
 $('.results-card-container').on("click", ".match-button", createMatch); 
-console.log("test")

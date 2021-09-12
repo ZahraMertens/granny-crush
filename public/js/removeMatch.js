@@ -4,7 +4,6 @@ const createMatch = async (event) => {
    if(event.target.hasAttribute('data-id')){
 
    const user_id = event.target.getAttribute('data-id');
-   console.log(user_id)
        
        if (user_id){
            
