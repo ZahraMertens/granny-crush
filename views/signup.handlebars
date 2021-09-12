@@ -8,12 +8,9 @@
               <div class="field">
                 <label class="label is-normal">Username:</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input id="signup-username" class="input is-link" type="text" placeholder="Your preferred name" value="">
+                  <input id="signup-username" class="input is-link" type="text" placeholder="Your preferred name" value="" required>
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
-                  </span>
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
                   </span>
                 </div>
               </div>
@@ -21,12 +18,9 @@
               <div class="field">
                 <label class="label is-normal">Email:</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input id="signup-email" class="input is-link" type="email" placeholder="yourName@gmail.com" value="">
+                  <input id="signup-email" class="input is-link" type="email" placeholder="yourName@gmail.com" value="" required>
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
-                  </span>
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-exclamation-triangle"></i>
                   </span>
                 </div>
               </div>
@@ -35,7 +29,7 @@
                 <label class="label is-normal">Gender</label>
                 <div class="control">
                   <div class="select is-link">
-                    <select id="signup-gender">
+                    <select id="signup-gender" required>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                       <option value="Other">Other</option>
@@ -47,13 +41,19 @@
               <div class="field">
                 <label class="label">Phone:</label>
                  <div class="control has-icons-left has-icons-right">
-                  <input id="signup-phone" class="input is-link" type="text" placeholder="Text input" value="0423123456">
+                  <input id="signup-phone" class="input is-link" type="text" placeholder="Text input" value="0423123456" required>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-phone"></i>
+                  </span>
                  </div>
               </div>
               <div class="field">
                 <label class="label is-normal">Postcode:</label>
                  <div class="control has-icons-left has-icons-right">
-                  <input id="signup-postcode" class="input is-link" type="text" placeholder="Text input" value="2000">
+                  <input id="signup-postcode" class="input is-link" type="text" placeholder="Text input" value="2000" required>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-house-user"></i>
+                  </span>
                  </div>
               </div>
               <br>
@@ -61,7 +61,7 @@
                  <label class="label is-normal">Age:</label>
                    <div class="control">
                      <div class="select is-link">
-                       <select id="signup-age">
+                       <select id="signup-age" required>
                        {{!-- Loop from JS file to loop over age --}}
                        </select>
                      </div>
@@ -71,7 +71,10 @@
               <div>
                 <label class="label is-normal">Fun Fact:</label>
                   <div class="control has-icons-left has-icons-right">
-                    <textarea id="signup-fact" class="input is-link" type="text" placeholder="I am a crazy cat lady" value="2000" rows="1"></textarea>
+                    <textarea id="signup-fact" class="input is-link" type="text" placeholder="I am a crazy cat lady" value="2000" rows="1" required></textarea>
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-smile-wink"></i>
+                  </span>
                   </div>
               </div>
               <br>
@@ -116,7 +119,7 @@
               <div class="field">
                 <label class="label is-normal">Password:</label>
                  <p class="control has-icons-left">
-                   <input id="signup-password" class="input is-link" type="password" placeholder="">
+                   <input id="signup-password" class="input is-link" type="password" placeholder="" required>
                      <span class="icon is-small is-left">
                       <i class="fas fa-lock"></i>
                     </span>
