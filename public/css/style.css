@@ -152,7 +152,10 @@
     margin-top: 200px!important;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(239, 235, 243);
+    background-image: url(../images/pinkTex.jpg);
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     padding: 30px!important;
     border-radius: 15px;
     border: solid 1px rgb(202, 202, 202);
