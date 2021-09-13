@@ -53,7 +53,7 @@ const updateHandler = async (event) => {
             if(res.ok){
                 document.location.replace(`/profile`)
             } else {
-                alert(res.error)
+                alert("Sorry it looks like there is a mistake with your inputs. Please check and try again...")
             }
         }
     }
